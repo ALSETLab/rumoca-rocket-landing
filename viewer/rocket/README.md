@@ -47,9 +47,11 @@ shows "Missing Rumoca viewer shell". The CLI looks for `packages/rumoca-web/viz/
 `packages/rumoca-web/vendor/three_viewer.js` under the current folder, so the launch script runs it from
 `C:\GIT\rumoca-web-assets`, which holds both (see the README there).
 
-```bash
-bash C:/GIT/rumoca-rocket-landing/viewer/rocket/run_viewer.sh
+```powershell
+& C:\GITumoca-rocket-landingiewerocketun_viewer.ps1
 ```
+
+From Git Bash: `bash C:/GIT/rumoca-rocket-landing/viewer/rocket/run_viewer.sh`.
 
 Then open <http://localhost:8080>. The viewer runs in real time until you press Q or stop `rumoca.exe`.
 
