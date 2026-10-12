@@ -1,0 +1,7 @@
+Third-party portions:
+- scripts/common.py: the rk4 and jax_rollout helpers are adapted from
+  scripts/common.py of CogniPilot/rumoca_workshop_amc2026, licensed under the
+  Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+- The model parameters and equations in models/ and viewer/rocket/ derive from
+  ALSETLab/RocketLanding (https://github.com/ALSETLab/RocketLanding); see that
+  repository for its license.
