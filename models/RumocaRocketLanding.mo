@@ -26,14 +26,15 @@ package RumocaRocketLanding
   end Lander;
 
   model LanderBurn
-    "Lander flown open loop for Rumoca's native simulator and OpenModelica: coast, then constant throttle from t_ign (the hoverslam schedule found with CasADi). Terminates at touchdown."
+    "Lander flown open loop for Rumoca's native simulator and OpenModelica: coast, then constant throttle from t_ign (the hoverslam schedule found with CasADi) until the tank is empty. Terminates at touchdown."
     parameter Real t_ign(unit="s") = 3.0 "Ignition time";
     parameter Real u_burn = 1.0 "Throttle after ignition";
     Lander lander;
     Real Fthrust(unit="N") "Engine thrust";
     Real rocket_mass(unit="kg") "Total mass";
   equation
-    lander.u = if time >= t_ign then u_burn else 0;
+    // Engine cut-off when the tank is empty, as EngineOn = fuel_mass > 0 in the original model
+    lander.u = if time >= t_ign and lander.fuel_mass > 0 then u_burn else 0;
     Fthrust = lander.u*lander.Fengine;
     rocket_mass = lander.EmptyRocket + lander.fuel_mass;
     when lander.y <= 0 then

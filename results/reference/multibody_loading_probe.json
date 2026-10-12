@@ -1,0 +1,27 @@
+{
+  "rumoca": "0.10.2",
+  "msl_root": "C:\\GIT\\rumoca-rocket-landing\\results\\scratch\\msl323",
+  "probes": [
+    {
+      "outcome": "error",
+      "error": "CompileError: RocketLanding.SimpleLander.FusalageInGravity could not be compiled: unresolved type reference: 'Modelica.Mechanics.MultiBody.World'\nRelated failures (showing 2):\n- <resolve> [Resolve]: unresolved type reference: 'Modelica.Mechanics.MultiBody.World'\n- <resolve> [Resolve]: unresolved type reference: 'Modelica.Mechanics.MultiBody.Parts.BodyCylinder'",
+      "probe": "load library package.mo with roots=[msl323]",
+      "file": "C:\\GIT\\RocketLanding\\package.mo",
+      "wall_s": 0.5
+    },
+    {
+      "outcome": "loaded",
+      "summary": "RocketLanding.SimpleLander.FusalageInGravity \u2014 6 states, 220 algebraic, 0 inputs, 0 outputs, 126 parameters",
+      "probe": "load single model file with roots=[msl323] (control, expected to work)",
+      "file": "C:\\GIT\\RocketLanding\\SimpleLander\\FusalageInGravity.mo",
+      "wall_s": 43.9
+    },
+    {
+      "outcome": "error",
+      "error": "CompileError: Failed to load source root 'C:\\GIT': invalid Modelica package layout under 'C:\\GIT': PKG-006 directory 'C:\\GIT\\MMChvdcLibrary\\Dependencies\\OpenIPSL\\Examples\\Microgrids\\UniversityCampus\\CampusA\\GUnitTest' is missing package.mo; PKG-006 directory 'C:\\GIT\\MMChvdcLibrary\\Dependencies\\OpenIPSL\\Examples\\Microgrids\\UniversityCampus\\CampusB\\Data' is missing package.mo; PKG-006 directory 'C:\\GIT\\Modelica-Drone-3D-FMI\\A_Modelica\\DroneLibrary\\Electrical\\Sources\\FuelCell' is missing package.mo; PKG-006 directory 'C:\\GIT\\Modelica-Drone-3D-FMI\\A_Modelica\\DroneLibrary\\Examples\\PowerSystem' is missing package.mo; PKG-006 directory 'C:\\GIT\\Modelica-Drone-3D-FMI\\A_Modelica\\DroneLibrary\\Visualize\\Runs' is missing package.mo; PKG-006 directory 'C:\\GIT\\OpenIPSL\\OpenIPSL\\Electrical\\GFCs\\GFMs\\TestC",
+      "probe": "roots=[msl323, C:/GIT] (parent folder of the library as a second root)",
+      "file": "C:\\GIT\\RocketLanding\\SimpleLander\\FusalageInGravity.mo",
+      "wall_s": 52.87
+    }
+  ]
+}

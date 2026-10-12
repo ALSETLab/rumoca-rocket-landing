@@ -1,0 +1,564 @@
+{
+  "rumoca_version": "0.10.2",
+  "model": "RocketLanding.SimpleLander.rocket",
+  "model_file": "C:\\GIT\\RocketLanding\\SimpleLander\\rocket.mo",
+  "t_end_s": 60.0,
+  "rumoca_output_dt_s": 0.05,
+  "openmodelica": {
+    "method": "dassl",
+    "tolerance": 1e-08,
+    "intervals": 1200,
+    "stdout_tail": "true\n\"\"\nrecord SimulationResult\n    resultFile = \"C:/GIT/rumoca-rocket-landing/results/live/om/om_rocket_baseline_res.csv\",\n    simulationOptions = \"startTime = 0.0, stopTime = 60.0, numberOfIntervals = 1200, tolerance = 1e-8, method = 'dassl', fileNamePrefix = 'om_rocket_baseline', options = '', outputFormat = 'csv', variableFilter = '.*', cflags = '', simflags = ''\",\n    messages = \"LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.\nLOG_SUCCESS       | info    | The simulation finished successfully.\n\",\n    timeFrontend = 0.0025616,\n    timeBackend = 0.00576,\n    timeSimCode = 0.0015706,\n    timeTemplates = 0.0231268,\n    timeCompile = 1.3444819,\n    timeSimulation = 0.1202811,\n    timeTotal = 1.4981202\nend SimulationResult;\n\n",
+    "timings": {
+      "timeFrontend_s": 0.0025616,
+      "timeBackend_s": 0.00576,
+      "timeSimCode_s": 0.0015706,
+      "timeTemplates_s": 0.0231268,
+      "timeCompile_s": 1.3444819,
+      "timeSimulation_s": 0.1202811,
+      "timeTotal_s": 1.4981202
+    },
+    "source_csv": "C:\\GIT\\rumoca-rocket-landing\\results\\live\\om\\om_rocket_baseline_res.csv",
+    "wall_s": 1.6767817999934778,
+    "n_points_raw": 1206,
+    "time_stamps": {
+      "n_points": 1206,
+      "n_exact_repeated_stamps": 3,
+      "exact_repeated_stamp_values_s": [
+        10.00000000000015,
+        15.03293294607453,
+        60.0
+      ],
+      "n_near_duplicate_pairs_lt_1e-9s": 1,
+      "near_duplicate_pairs": [
+        {
+          "t_pre_s": 10.0,
+          "gap_s": 1.4921397450962104e-13
+        }
+      ],
+      "min_positive_dt_s": 1.4921397450962104e-13,
+      "strictly_increasing": false
+    },
+    "final": {
+      "y": -2419.417682953659,
+      "v": -70.04924132495282,
+      "fuel_mass": -1.657118886555509e-12
+    },
+    "apogee": {
+      "y_max_m": 383.8020345195555,
+      "t_apogee_s": 15.03293294607453
+    },
+    "fuel_out_t_s": 9.999999999999988
+  },
+  "validate_diagnostics": [
+    "C:\\GIT\\RocketLanding\\SimpleLander\\rocket.mo:2:7: warning: model name 'rocket' should start with uppercase (PascalCase) [naming-convention]"
+  ],
+  "summary": "RocketLanding.SimpleLander.rocket \u2014 3 states, 5 algebraic, 0 inputs, 0 outputs, 7 parameters",
+  "structure": "StructuralInfo(states=3, algebraic=5, outputs=0, equations=8, unknowns=8, balanced=true, matched=true, blocks=8, algebraic_loops=0)",
+  "states": [
+    "y",
+    "v",
+    "fuel_mass"
+  ],
+  "inputs": [],
+  "parameters": [
+    {
+      "name": "EmptyRocket",
+      "value": 100.0,
+      "unit": "Kg"
+    },
+    {
+      "name": "InitialFuelMass",
+      "value": 100.0,
+      "unit": "Kg"
+    },
+    {
+      "name": "FuelBurnRate",
+      "value": 10.0,
+      "unit": "kg/m3"
+    },
+    {
+      "name": "Fengine",
+      "value": 2500.0,
+      "unit": "N"
+    },
+    {
+      "name": "rho",
+      "value": 1.225,
+      "unit": "kg/s"
+    },
+    {
+      "name": "S",
+      "value": 1.632,
+      "unit": "m2"
+    },
+    {
+      "name": "cd",
+      "value": 0.2,
+      "unit": null
+    }
+  ],
+  "wall_s": {
+    "load_compile": 0.3722198000032222,
+    "validate": 0.0022126999974716455,
+    "total_script": 5.915367199995671
+  },
+  "trajectory_range_om": {
+    "y": 2803.2197174732146,
+    "v": 129.6319260922324,
+    "fuel_mass": 100.00000000000166
+  },
+  "om_tight_tolerance_crosscheck": {
+    "tolerance": 1e-10,
+    "om_tol1e10_wall_s": 1.5665002000023378,
+    "om_tol1e10_timings": {
+      "timeFrontend_s": 0.0022588,
+      "timeBackend_s": 0.0056637,
+      "timeSimCode_s": 0.0014929,
+      "timeTemplates_s": 0.0227186,
+      "timeCompile_s": 1.2426782,
+      "timeSimulation_s": 0.12985,
+      "timeTotal_s": 1.4050641
+    },
+    "om_tol1e10_time_stamps": {
+      "n_points": 1206,
+      "n_exact_repeated_stamps": 3,
+      "exact_repeated_stamp_values_s": [
+        10.00000000000015,
+        15.03293288377434,
+        60.0
+      ],
+      "n_near_duplicate_pairs_lt_1e-9s": 1,
+      "near_duplicate_pairs": [
+        {
+          "t_pre_s": 10.0,
+          "gap_s": 1.4921397450962104e-13
+        }
+      ],
+      "min_positive_dt_s": 1.4921397450962104e-13,
+      "strictly_increasing": false
+    },
+    "om_tol1e8_vs_om_tol1e10_max_abs": {
+      "y": 1.8847546930267356e-05,
+      "v": 1.825830395318917e-06,
+      "fuel_mass": 6.217248937900877e-13
+    },
+    "rumoca_vs_om_tol1e10_max_abs": {
+      "auto": {
+        "y": 0.0009087330257671056,
+        "v": 0.0003405937044291818,
+        "fuel_mass": 5.471179065352771e-13
+      },
+      "rk-like": {
+        "y": 0.0003424521137276315,
+        "v": 4.85973759438707e-05,
+        "fuel_mass": 1.2584836667447015e-12
+      },
+      "bdf": {
+        "y": 0.0009087330257671056,
+        "v": 0.0003405937044291818,
+        "fuel_mass": 5.471179065352771e-13
+      }
+    },
+    "rumoca_tolerance_sweep": [
+      {
+        "solver": "rk-like",
+        "rtol": 1e-06,
+        "atol": 1e-08,
+        "wall_s": 0.008352900011232123,
+        "n_points": 1204,
+        "max_abs_vs_om_tol1e10": {
+          "y": 0.00016705744491218866,
+          "v": 3.9406366880712085e-05,
+          "fuel_mass": 9.955828545134645e-13
+        }
+      },
+      {
+        "solver": "rk-like",
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "wall_s": 0.008101700004772283,
+        "n_points": 1204,
+        "max_abs_vs_om_tol1e10": {
+          "y": 5.081347239865863e-06,
+          "v": 6.479615599630506e-07,
+          "fuel_mass": 5.648814749292796e-13
+        }
+      },
+      {
+        "solver": "rk-like",
+        "rtol": 1e-10,
+        "atol": 1e-12,
+        "wall_s": 0.009090199993806891,
+        "n_points": 1204,
+        "max_abs_vs_om_tol1e10": {
+          "y": 2.635850719912014e-07,
+          "v": 3.879308962950745e-08,
+          "fuel_mass": 5.968558980384842e-13
+        }
+      },
+      {
+        "solver": "bdf",
+        "rtol": 1e-06,
+        "atol": 1e-08,
+        "wall_s": 0.009319100005086511,
+        "n_points": 1204,
+        "max_abs_vs_om_tol1e10": {
+          "y": 0.0017178788352225638,
+          "v": 0.00031258333959982565,
+          "fuel_mass": 1.0107165066546284e-12
+        }
+      },
+      {
+        "solver": "bdf",
+        "rtol": 1e-08,
+        "atol": 1e-10,
+        "wall_s": 0.008018599997740239,
+        "n_points": 1204,
+        "max_abs_vs_om_tol1e10": {
+          "y": 3.607431868157818e-05,
+          "v": 2.7178845627418013e-06,
+          "fuel_mass": 1.2278026245983293e-12
+        }
+      },
+      {
+        "solver": "bdf",
+        "rtol": 1e-10,
+        "atol": 1e-12,
+        "wall_s": 0.007993000006536022,
+        "n_points": 1205,
+        "max_abs_vs_om_tol1e10": {
+          "y": 7.377557835752668e-07,
+          "v": 1.048229307798465e-07,
+          "fuel_mass": 8.970602038971265e-13
+        }
+      }
+    ]
+  },
+  "comparison": {
+    "auto": {
+      "ok": true,
+      "errors": {
+        "y": {
+          "max_abs": 0.0008912092622495038,
+          "t_at_max_abs_s": 29.1,
+          "rel_to_range": 3.17923442352506e-07,
+          "rms": 0.0005052564375658792
+        },
+        "v": {
+          "max_abs": 0.0003396648754900866,
+          "t_at_max_abs_s": 22.35,
+          "rel_to_range": 2.62022547785348e-06,
+          "rms": 9.800362971472506e-05
+        },
+        "fuel_mass": {
+          "max_abs": 5.420109634860348e-13,
+          "t_at_max_abs_s": 10.05,
+          "rel_to_range": 5.420109634860258e-15,
+          "rms": 4.954834896090898e-13
+        }
+      },
+      "apogee_rumoca": {
+        "y_max_m": 383.8021412103302,
+        "t_apogee_s": 15.032936802170068
+      },
+      "apogee_om": {
+        "y_max_m": 383.8020345195555,
+        "t_apogee_s": 15.03293294607453
+      },
+      "apogee_dy_m": 0.00010669077471447963,
+      "apogee_dt_s": 3.85609553887889e-06,
+      "fuel_out_rumoca_s": 10.000000000000005,
+      "fuel_out_om_s": 9.999999999999988,
+      "fuel_out_dt_s": 1.7763568394002505e-14,
+      "final_rumoca": {
+        "y": -2419.416963851285,
+        "v": -70.04922066154182,
+        "fuel_mass": -1.1151079230694742e-12
+      },
+      "final_om": {
+        "y": -2419.417682953659,
+        "v": -70.04924132495282,
+        "fuel_mass": -1.657118886555509e-12
+      },
+      "score_max_rel_to_range": 2.62022547785348e-06
+    },
+    "rk-like": {
+      "ok": true,
+      "errors": {
+        "y": {
+          "max_abs": 0.0003514129414270428,
+          "t_at_max_abs_s": 46.25,
+          "rel_to_range": 1.2536047004685092e-07,
+          "rms": 0.0002479540696051406
+        },
+        "v": {
+          "max_abs": 4.969001562926678e-05,
+          "t_at_max_abs_s": 10.55,
+          "rel_to_range": 3.8331618704726037e-07,
+          "rms": 1.2754490835573864e-05
+        },
+        "fuel_mass": {
+          "max_abs": 1.5896173266582995e-12,
+          "t_at_max_abs_s": 10.05,
+          "rel_to_range": 1.589617326658273e-14,
+          "rms": 1.4505916955344234e-12
+        }
+      },
+      "apogee_rumoca": {
+        "y_max_m": 383.80200303251206,
+        "t_apogee_s": 15.032930133330227
+      },
+      "apogee_om": {
+        "y_max_m": 383.8020345195555,
+        "t_apogee_s": 15.03293294607453
+      },
+      "apogee_dy_m": -3.1487043429478945e-05,
+      "apogee_dt_s": -2.81274430236067e-06,
+      "fuel_out_rumoca_s": 9.999999999999998,
+      "fuel_out_om_s": 9.999999999999988,
+      "fuel_out_dt_s": 1.0658141036401503e-14,
+      "final_rumoca": {
+        "y": -2419.418016219841,
+        "v": -70.04923498437479,
+        "fuel_mass": -6.750155989720952e-14
+      },
+      "final_om": {
+        "y": -2419.417682953659,
+        "v": -70.04924132495282,
+        "fuel_mass": -1.657118886555509e-12
+      },
+      "score_max_rel_to_range": 3.8331618704726037e-07
+    },
+    "bdf": {
+      "ok": true,
+      "errors": {
+        "y": {
+          "max_abs": 0.0008912092622495038,
+          "t_at_max_abs_s": 29.1,
+          "rel_to_range": 3.17923442352506e-07,
+          "rms": 0.0005052564375658792
+        },
+        "v": {
+          "max_abs": 0.0003396648754900866,
+          "t_at_max_abs_s": 22.35,
+          "rel_to_range": 2.62022547785348e-06,
+          "rms": 9.800362971472506e-05
+        },
+        "fuel_mass": {
+          "max_abs": 5.420109634860348e-13,
+          "t_at_max_abs_s": 10.05,
+          "rel_to_range": 5.420109634860258e-15,
+          "rms": 4.954834896090898e-13
+        }
+      },
+      "apogee_rumoca": {
+        "y_max_m": 383.8021412103302,
+        "t_apogee_s": 15.032936802170068
+      },
+      "apogee_om": {
+        "y_max_m": 383.8020345195555,
+        "t_apogee_s": 15.03293294607453
+      },
+      "apogee_dy_m": 0.00010669077471447963,
+      "apogee_dt_s": 3.85609553887889e-06,
+      "fuel_out_rumoca_s": 10.000000000000005,
+      "fuel_out_om_s": 9.999999999999988,
+      "fuel_out_dt_s": 1.7763568394002505e-14,
+      "final_rumoca": {
+        "y": -2419.416963851285,
+        "v": -70.04922066154182,
+        "fuel_mass": -1.1151079230694742e-12
+      },
+      "final_om": {
+        "y": -2419.417682953659,
+        "v": -70.04924132495282,
+        "fuel_mass": -1.657118886555509e-12
+      },
+      "score_max_rel_to_range": 2.62022547785348e-06
+    }
+  },
+  "bitwise_identical_solver_pairs": [
+    [
+      "auto",
+      "bdf"
+    ]
+  ],
+  "best_agreeing_solver": "rk-like",
+  "solver_ranking_by_max_rel_error": [
+    "rk-like",
+    "auto",
+    "bdf"
+  ],
+  "analytic_fuel_out_t_s": 10.0,
+  "notes": [
+    "Rumoca native simulation with fixed output dt=0.05; OpenModelica dassl with tolerance 1e-8 and 1200 intervals plus event samples. Both detect the EngineOn (fuel_mass>0) and Ascending (v>=0) events; the EngineOn event has an analytic solution t=InitialFuelMass/FuelBurnRate=10 s.",
+    "Comparison is on the uniform 0.05 s grid by linear interpolation of both results. OpenModelica's CSV repeats the time stamp exactly at events (3 exact repeats at t = [10.00000000000015, 15.03293294607453, 60.0]); dedupe_last keeps the post-event sample there. Rumoca's output has NO exactly repeated stamps: its pre/post-event sample pairs are strictly increasing and ~1e-13 s apart (auto: 0 exact repeats, 2 near-duplicate pairs, min dt 1.01e-13 s; rk-like: 0 exact repeats, 2 near-duplicate pairs, min dt 5.33e-15 s; bdf: 0 exact repeats, 2 near-duplicate pairs, min dt 1.01e-13 s), so dedupe_last removes nothing from Rumoca output and np.interp works on it directly.",
+    "rum.validate reports only a naming-convention warning (lower-case model name 'rocket'); no errors."
+  ],
+  "figure_error_panel_styles": {
+    "rk-like": {
+      "drawn": true,
+      "linestyle": "solid",
+      "label_tag": "rk-like"
+    },
+    "auto": {
+      "drawn": true,
+      "linestyle": "dashed",
+      "label_tag": "auto (= bdf, bitwise identical)"
+    },
+    "bdf": {
+      "drawn": false,
+      "identical_to": [
+        "auto"
+      ]
+    }
+  },
+  "rumoca_runs": {
+    "auto": {
+      "ok": true,
+      "wall_first_s": 0.012548800004879013,
+      "wall_warm_s": 0.008412199997110292,
+      "n_points": 1204,
+      "termination": null,
+      "names": [
+        "y",
+        "v",
+        "rocket_mass",
+        "fuel_mass",
+        "Fnet",
+        "Fgravity",
+        "Fdrag",
+        "EngineOn",
+        "Ascending",
+        "qbar"
+      ],
+      "metrics": "{'points': 1204, 'variables': 10, 'compile_seconds': None, 'simulate_seconds': 0.0125045}",
+      "final": {
+        "y": -2419.416963851285,
+        "v": -70.04922066154182,
+        "fuel_mass": -1.1151079230694742e-12
+      },
+      "apogee": {
+        "y_max_m": 383.8021412103302,
+        "t_apogee_s": 15.032936802170068
+      },
+      "fuel_out_t_s": 10.000000000000005,
+      "time_stamps": {
+        "n_points": 1204,
+        "n_exact_repeated_stamps": 0,
+        "exact_repeated_stamp_values_s": [],
+        "n_near_duplicate_pairs_lt_1e-9s": 2,
+        "near_duplicate_pairs": [
+          {
+            "t_pre_s": 10.0,
+            "gap_s": 1.1723955140041653e-13
+          },
+          {
+            "t_pre_s": 15.032936802169967,
+            "gap_s": 1.0125233984581428e-13
+          }
+        ],
+        "min_positive_dt_s": 1.0125233984581428e-13,
+        "strictly_increasing": true
+      }
+    },
+    "rk-like": {
+      "ok": true,
+      "wall_first_s": 0.004981300007784739,
+      "wall_warm_s": 0.00499370000034105,
+      "n_points": 1204,
+      "termination": null,
+      "names": [
+        "y",
+        "v",
+        "rocket_mass",
+        "fuel_mass",
+        "Fnet",
+        "Fgravity",
+        "Fdrag",
+        "EngineOn",
+        "Ascending",
+        "qbar"
+      ],
+      "metrics": "{'points': 1204, 'variables': 10, 'compile_seconds': None, 'simulate_seconds': 0.0049487}",
+      "final": {
+        "y": -2419.418016219841,
+        "v": -70.04923498437479,
+        "fuel_mass": -6.750155989720952e-14
+      },
+      "apogee": {
+        "y_max_m": 383.80200303251206,
+        "t_apogee_s": 15.032930133330227
+      },
+      "fuel_out_t_s": 9.999999999999998,
+      "time_stamps": {
+        "n_points": 1204,
+        "n_exact_repeated_stamps": 0,
+        "exact_repeated_stamp_values_s": [],
+        "n_near_duplicate_pairs_lt_1e-9s": 2,
+        "near_duplicate_pairs": [
+          {
+            "t_pre_s": 10.0,
+            "gap_s": 5.329070518200751e-15
+          },
+          {
+            "t_pre_s": 15.032930133330227,
+            "gap_s": 1.580957587066223e-13
+          }
+        ],
+        "min_positive_dt_s": 5.329070518200751e-15,
+        "strictly_increasing": true
+      }
+    },
+    "bdf": {
+      "ok": true,
+      "wall_first_s": 0.005459799998789094,
+      "wall_warm_s": 0.006311899996944703,
+      "n_points": 1204,
+      "termination": null,
+      "names": [
+        "y",
+        "v",
+        "rocket_mass",
+        "fuel_mass",
+        "Fnet",
+        "Fgravity",
+        "Fdrag",
+        "EngineOn",
+        "Ascending",
+        "qbar"
+      ],
+      "metrics": "{'points': 1204, 'variables': 10, 'compile_seconds': None, 'simulate_seconds': 0.005428}",
+      "final": {
+        "y": -2419.416963851285,
+        "v": -70.04922066154182,
+        "fuel_mass": -1.1151079230694742e-12
+      },
+      "apogee": {
+        "y_max_m": 383.8021412103302,
+        "t_apogee_s": 15.032936802170068
+      },
+      "fuel_out_t_s": 10.000000000000005,
+      "time_stamps": {
+        "n_points": 1204,
+        "n_exact_repeated_stamps": 0,
+        "exact_repeated_stamp_values_s": [],
+        "n_near_duplicate_pairs_lt_1e-9s": 2,
+        "near_duplicate_pairs": [
+          {
+            "t_pre_s": 10.0,
+            "gap_s": 1.1723955140041653e-13
+          },
+          {
+            "t_pre_s": 15.032936802169967,
+            "gap_s": 1.0125233984581428e-13
+          }
+        ],
+        "min_positive_dt_s": 1.0125233984581428e-13,
+        "strictly_increasing": true
+      }
+    }
+  },
+  "figure": "C:\\GIT\\rumoca-rocket-landing\\results\\live\\baseline_original_rocket.png"
+}
