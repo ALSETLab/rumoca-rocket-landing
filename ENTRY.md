@@ -9,8 +9,8 @@ Luigi Vanfretti (ALSETLab, RPI). Question: can Rumoca take our 2021 Modelica roc
 and plan a minimum-propellant hoverslam with CasADi that OpenModelica confirms? Starting model:
 `RocketLanding.SimpleLander.rocket` (Canham, Podlaski, Vanfretti, Modelica 2021). Tool: Claude Code
 (Claude Fable 5.1, then Claude Opus 5.5) in the Claude desktop app, with Rumoca 0.10.2, CasADi, JAX,
-OpenModelica 1.27. Elapsed: 1 h 00 min to the verified plots (10:05 to 11:05 EDT), 1 h 45 min including
-the 3-D viewer (to 11:50 EDT), all debugging included. Shown live: the Rumoca viewer at http://localhost:8080
+OpenModelica 1.27. Elapsed: 1 h 00 min to the verified plots (10:05 to 11:05 EDT), 2 h 00 min including
+the 3-D viewer with buttons and loop mode (to 12:05 EDT), all debugging included. Shown live: the Rumoca viewer at http://localhost:8080
 with the autopilot landing, plus the figures.
 
 ## Gallery post
@@ -49,7 +49,7 @@ near the altitude where the CasADi switch falls (402.40 m); Rumoca's native simu
 
 **Tool and time.** Claude Code (Claude Fable 5.1, then Claude Opus 5.5 after 11:30 EDT), Rumoca 0.10.2,
 CasADi 3.7.2, JAX 0.4.38, OpenModelica 1.27. Wall time 1 h 00 min to the verified figures (10:05 to 11:05
-EDT) and 1 h 45 min including the 3-D viewer, all debugging included.
+EDT) and 2 h 00 min including the 3-D viewer, all debugging included.
 
 **Links.** Repository folder `C:\GIT\rumoca-rocket-landing` (public link to follow if published).
 
