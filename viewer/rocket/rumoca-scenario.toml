@@ -1,0 +1,156 @@
+# ALSETLab RocketLanding hoverslam in Rumoca's interactive 3-D viewer.
+# Run from this folder:  rumoca sim -c rumoca-scenario.toml   then open http://localhost:8080/
+# Validate:              rumoca sim check -c rumoca-scenario.toml
+
+[rumoca]
+version = "1"
+task = "simulate"
+
+[model]
+file = "LanderLive.mo"
+name = "LanderLive"
+
+[sim]
+dt = 0.01
+mode = "realtime"
+solver = "rk-like"
+
+[transport.http]
+port = 8080
+scene = "rocket_scene.js"
+asset_dir = "assets"
+
+[transport.websocket]
+port = 8081
+
+# ---- operator-side state ----------------------------------------------------
+[locals.throttle]
+type = "float"
+default = 0
+
+[locals.throttle_input]
+type = "float"
+default = 0
+
+[locals.autopilot]
+type = "bool"
+default = true
+
+# ---- keyboard ---------------------------------------------------------------
+[input]
+mode = "keyboard"
+
+[input.keyboard.keys.w]
+action = "set"
+target = "throttle_input"
+value = 1
+
+[input.keyboard.keys.s]
+action = "set"
+target = "throttle_input"
+value = -1
+
+[input.keyboard.keys.Space]
+action = "toggle"
+state = "autopilot"
+debounce_ms = 500
+
+[input.keyboard.keys.r]
+action = "signal"
+signal = "reset"
+
+[input.keyboard.keys.q]
+action = "signal"
+signal = "quit"
+
+[input.keyboard.integrators.throttle]
+source = "local:throttle_input"
+write = "throttle"
+rate = 0.7
+clamp = [0, 1]
+
+[input.keyboard.decay]
+factor = 0.85
+ref_dt = 0.016
+targets = ["throttle_input"]
+
+# ---- wiring into the Modelica model -----------------------------------------
+[signals.model_inputs]
+throttle_cmd = "local:throttle"
+autopilot = { from = "local:autopilot", when_false = 0, when_true = 1 }
+
+[signals.viewer]
+px = "model:position[1]"
+py = "model:position[2]"
+pz = "model:position[3]"
+q1 = "model:quat[2]"
+q2 = "model:quat[3]"
+q3 = "model:quat[4]"
+vx = "model:vx"
+vy = "model:vy"
+vz = "model:v"
+thrust = "model:thrust"
+fuel = "model:fuel_mass"
+u = "model:u"
+landed = "model:landed"
+crashed = "model:crashed"
+touchdown_speed = "model:touchdown_speed"
+autopilot = "local:autopilot"
+throttle = "local:throttle"
+t = "model:time"
+frame = "runtime:frame_num"
+wall_ms = "runtime:wall_ms"
+
+[signals.viewer.q0]
+from = "model:quat[1]"
+default = 1
+
+# ---- viewer -----------------------------------------------------------------
+[viewer]
+mode = "results_panel"
+status_title = "ALSETLab RocketLanding - Rumoca hoverslam"
+show_armed = false
+
+[[viewer.frame]]
+name = "body"
+position = ["px", "py", "pz"]
+quaternion = ["q0", "q1", "q2", "q3"]
+
+[viewer.hud]
+mode = "flight"
+frame = "body"
+altitude = "pz"
+speed = ["vx", "vy", "vz"]
+
+[[viewer.controls.keyboard]]
+keys = "W / S"
+action = "Throttle up / down (manual mode)"
+
+[[viewer.controls.keyboard]]
+keys = "Space"
+action = "Autopilot on / off (CasADi hoverslam)"
+
+[[viewer.controls.keyboard]]
+keys = "R"
+action = "Reset to 800 m, -70 m/s"
+
+[[viewer.controls.keyboard]]
+keys = "T"
+action = "Realtime toggle"
+
+[[viewer.controls.keyboard]]
+keys = "F"
+action = "Fullscreen"
+
+[[viewer.controls.keyboard]]
+keys = "C"
+action = "Camera"
+
+[[viewer.controls.keyboard]]
+keys = "Q"
+action = "Quit"
+
+[reset]
+on_signal = "reset"
+reset_session = true
+reset_locals = true

@@ -91,11 +91,15 @@ costs a few tenths of a metre per second.
   relative: igniting 100 ms after the optimum costs 15.0 m/s of touchdown speed; the touchdown speed follows
   v = -sqrt(K * delay) with K = 2069 m^2/s^3 to within 8 % over 10 ms to 0.5 s.
 
-### 4. Rumoca's 3-D viewer
+### 4. Flying it in Rumoca's 3-D viewer
 
-`viewer/rocket/` holds `LanderLive.mo`, `rumoca-scenario.toml` and `rocket_scene.js` for the Rumoca CLI's
-interactive viewer: keyboard throttle (W/S), Space toggles the CasADi autopilot (full throttle from 4.96 s),
-R resets. See `viewer/rocket/README.md` for the run command and controls.
+`viewer/rocket/` runs `LanderLive.mo` in the Rumoca CLI's interactive Three.js viewer
+(`bash viewer/rocket/run_viewer.sh`, then open http://localhost:8080). Space toggles the autopilot, W/S fly
+the throttle by hand, R resets. The autopilot is the CasADi hoverslam turned into a trigger: ignite when the
+altitude drops through 402.45 m, 6 cm below where the optimal switch time falls on the coast. Rumoca's
+native simulator lands it at 1.3 m/s with 11.7 kg left (both `rk-like` and `auto`); at the exact optimum the
+default solver misses the grazing touchdown event (see findings). Screenshots:
+`results/reference/viewer_burn.jpg` and `viewer_landed.jpg`. Details in `viewer/rocket/README.md`.
 
 ### 5. How far Rumoca gets with the 3-D MultiBody models (stretch)
 
@@ -126,6 +130,9 @@ at an event for `propellerTest`, a Solve-IR tensor fill for the full drone examp
   OpenModelica terminates at the first crossing. Figure `results/reference/landing_grazing_event.png`.
 - Time events (`time >= t_ign`) are applied on an internal grid of about 2e-4 s: ignition times spaced 2e-5 s
   apart produce only five distinct results (`native_time_event_resolution.json`).
+- The Windows release binary does not ship the viewer's browser bundle ("Missing Rumoca viewer shell"); it
+  reads `packages/rumoca-web/` from the current folder. The viewer's reset restores the states but not the
+  model clock, so time-triggered logic misfires after R.
 - Library roots: cross-root references do not resolve, so the MSL must be one root directory containing
   `Modelica/`, `ModelicaServices/` and `Complex/`. OpenModelica's `ModelicaServices` needs two
   OpenModelica-specific calls replaced. `Modelica.Math`'s `external "builtin"` functions block simulation
@@ -148,11 +155,12 @@ The baseline and the OpenModelica cross-checks need `omc.exe` from OpenModelica 
 `scripts/common.py`). The MultiBody stretch needs the Modelica Standard Library 3.2.3 and 4.0.0 as single
 root directories (`results/scratch/msl323`, `results/scratch/msl400`, built from OpenModelica's library
 folder as described in the stretch script). The 3-D viewer needs the Rumoca CLI
-(`rumoca-windows-x86_64.exe` from the v0.10.2 release, installed as `%LOCALAPPDATA%\rumoca\bin\rumoca.exe`).
+(`rumoca-windows-x86_64.exe` from the v0.10.2 release, installed as `%LOCALAPPDATA%\rumoca\bin\rumoca.exe`),
+plus the browser bundle in `C:\GIT\rumoca-web-assets`, which the release binary does not ship (see that README).
 
 ## Credits
 
 Starting model and parameters: ALSETLab RocketLanding (see that repository's license). Integration helpers
 adapted from `scripts/common.py` of CogniPilot/rumoca_workshop_amc2026 (Apache-2.0). Tooling: Rumoca 0.10.2,
-CasADi 3.7.2 with IPOPT, JAX 0.4.38, OpenModelica 1.27.0. Agent: Claude Code (Claude Fable 5.1) in the Claude
-desktop app; wall time is recorded in `ENTRY.md`.
+CasADi 3.7.2 with IPOPT, JAX 0.4.38, OpenModelica 1.27.0. Agent: Claude Code in the Claude desktop app, with Claude Fable 5.1
+and, after 11:30 EDT, Claude Opus 5.5; wall time is recorded in `ENTRY.md`.

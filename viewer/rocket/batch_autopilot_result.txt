@@ -1,0 +1,6 @@
+rk-like  y_ign=402.51: ignition t=4.988 s | landed t=13.896 s touchdown_speed=-0.340 m/s fuel_left=10.92 kg crashed=0 y_min=-0.0000
+rk-like  y_ign=402.45: ignition t=4.988 s | landed t=13.816 s touchdown_speed=-1.353 m/s fuel_left=11.72 kg crashed=0 y_min=-0.0000
+rk-like  y_ign=402.4: ignition t=4.989 s | landed t=13.781 s touchdown_speed=-1.802 m/s fuel_left=12.08 kg crashed=0 y_min=-0.0000
+auto     y_ign=402.51: ignition t=4.988 s | landed t=18.418 s touchdown_speed=-18.683 m/s fuel_left=-0.00 kg crashed=1 y_min=-0.0000
+auto     y_ign=402.45: ignition t=4.988 s | landed t=13.820 s touchdown_speed=-1.305 m/s fuel_left=11.68 kg crashed=0 y_min=-0.0000
+auto     y_ign=402.4: ignition t=4.989 s | landed t=13.784 s touchdown_speed=-1.766 m/s fuel_left=12.05 kg crashed=0 y_min=-0.0000

@@ -1,0 +1,22 @@
+
+Model: C:\GIT\rumoca-rocket-landing\viewer\rocket\LanderLive.mo (start 800 m, -70 m/s, 100 kg propellant)
+Open-loop full-throttle hoverslam: autopilot ignition time sweep, Rumoca 0.10.2 native sim, rk-like, dt=0.01, t_end=20 s
+t_ign=4.965: landed at t=18.516  touchdown_speed=-19.7611 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.970: landed at t=18.495  touchdown_speed=-19.5298 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.975: landed at t=18.474  touchdown_speed=-19.2952 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.980: landed at t=18.452  touchdown_speed=-19.0573 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.985: landed at t=18.430  touchdown_speed=-18.8158 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.986: landed at t=18.426  touchdown_speed=-18.7671 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.987: landed at t=18.421  touchdown_speed=-18.7183 m/s  fuel_left=-0.000 kg  crashed=1
+t_ign=4.988: landed at t=13.860  touchdown_speed=-0.7959 m/s  fuel_left=11.281 kg  crashed=0
+t_ign=4.989: landed at t=13.784  touchdown_speed=-1.7636 m/s  fuel_left=12.050 kg  crashed=0
+t_ign=4.990: landed at t=13.737  touchdown_speed=-2.3590 m/s  fuel_left=12.527 kg  crashed=0
+t_ign=4.995: landed at t=13.593  touchdown_speed=-4.2010 m/s  fuel_left=14.023 kg  crashed=1
+t_ign=5.00: landed at t=13.496  touchdown_speed=-5.4335 m/s  fuel_left=15.042 kg  crashed=1
+t_ign=5.03: landed at t=13.144  touchdown_speed=-9.9174 m/s  fuel_left=18.862 kg  crashed=1
+t_ign=5.06: landed at t=12.916  touchdown_speed=-12.8311 m/s  fuel_left=21.437 kg  crashed=1
+t_ign=5.09: landed at t=12.737  touchdown_speed=-15.1407 m/s  fuel_left=23.528 kg  crashed=1
+t_ign=5.12: landed at t=12.586  touchdown_speed=-17.1044 m/s  fuel_left=25.340 kg  crashed=1
+t_ign=5.15: landed at t=12.454  touchdown_speed=-18.8372 m/s  fuel_left=26.962 kg  crashed=1
+t_ign=4.960 (CasADi value, model as shipped before re-tuning): landed at t=18.537  touchdown_speed=-19.9892 m/s  fuel_left=-0.000 kg  crashed=1
+Chosen model default: t_ign=4.988 (see batch_autopilot_result.txt)

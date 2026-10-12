@@ -3,3 +3,5 @@ results/live/
 results/scratch/
 __pycache__/
 *.pyc
+viewer/rocket/viewer_run.log
+viewer/rocket/*.html

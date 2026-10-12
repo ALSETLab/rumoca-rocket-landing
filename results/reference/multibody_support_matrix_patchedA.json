@@ -1,10 +1,13 @@
 {
   "rumoca_version": "0.10.2",
   "sim_t_end": 1.0,
+  "sim_t_end_by_model": {
+    "DroneLibrary.Tests.motorTest": 3.0
+  },
   "sim_dt": 0.1,
   "child_timeout_s": 420.0,
-  "msl323_root": "C:\\GIT\\rumoca-rocket-landing\\results\\scratch\\msl323_triage_A",
-  "msl400_root": "C:\\GIT\\rumoca-rocket-landing\\results\\scratch\\msl400_triage_A",
+  "msl323_root": "C:/GIT/rumoca-rocket-landing/results/scratch/msl323_triage_A",
+  "msl400_root": "C:/GIT/rumoca-rocket-landing/results/scratch/msl400_triage_A",
   "n_models": 7,
   "n_compiled": 6,
   "n_simulated": 3,
@@ -16,7 +19,9 @@
       "rumoca": "0.10.2",
       "compiled": true,
       "simulated": true,
-      "compile_s": 4.83,
+      "sim_t_end_requested": 1.0,
+      "sim_dt": 0.1,
+      "compile_s": 6.17,
       "summary": "RocketLanding.SimpleLander.FusalageInGravity \u2014 6 states, 220 algebraic, 0 inputs, 0 outputs, 126 parameters",
       "structure": "StructuralInfo(states=6, algebraic=220, outputs=0, equations=854, unknowns=854, balanced=true, matched=true, blocks=382, algebraic_loops=3)",
       "structure_n_equations": 854,
@@ -27,8 +32,16 @@
       "n_parameters": 126,
       "n_inputs": 0,
       "n_outputs": 0,
+      "state_names": [
+        "FirstStage.r_0",
+        "FirstStage.v_0",
+        "FirstStage.body.frame_a.r_0",
+        "FirstStage.body.v_0",
+        "FirstStage.body.w_a",
+        "FirstStage.body.Q"
+      ],
       "flat_dict_chars": 1580694,
-      "flat_dict_s": 0.08,
+      "flat_dict_s": 0.09,
       "flat_dict_keys": {
         "predefined_string_declaration": "4",
         "predefined_types": 5,
@@ -66,13 +79,53 @@
         "instance_relations": 465
       },
       "n_equations_flat": 41,
-      "simulate_s": 0.7,
+      "n_states_scalar": 19,
+      "n_states_scalar_missing": 0,
+      "n_algebraics_scalar": 831,
+      "state_dims": {
+        "FirstStage.r_0": [
+          3
+        ],
+        "FirstStage.v_0": [
+          3
+        ],
+        "FirstStage.body.frame_a.r_0": [
+          3
+        ],
+        "FirstStage.body.v_0": [
+          3
+        ],
+        "FirstStage.body.w_a": [
+          3
+        ],
+        "FirstStage.body.Q": [
+          4
+        ]
+      },
+      "simulate_s": 0.72,
       "sim_n_points": 11,
       "sim_t_end": 1.0,
       "sim_termination": null,
       "sim_n_names": 893,
+      "sim_n_varying": 10,
+      "sim_n_non_finite": 0,
+      "sim_key_signals": {
+        "FirstStage.r_0[3]": {
+          "first": 166000.0,
+          "last": 165995.0871332565,
+          "min": 165995.0871332565,
+          "max": 166000.0
+        },
+        "FirstStage.v_0[3]": {
+          "first": 0.0,
+          "last": -9.806649999999998,
+          "min": -9.806649999999998,
+          "max": 0.0
+        }
+      },
+      "n_states_scalar_from_results": 19,
       "child_returncode": 0,
-      "child_wall_s": 6.93,
+      "child_wall_s": 8.45,
       "msl": "3.2.3"
     },
     {
@@ -82,7 +135,9 @@
       "rumoca": "0.10.2",
       "compiled": true,
       "simulated": false,
-      "compile_s": 6.01,
+      "sim_t_end_requested": 1.0,
+      "sim_dt": 0.1,
+      "compile_s": 6.72,
       "summary": "RocketLanding.SimpleLander.FusalageWithForce \u2014 9 states, 394 algebraic, 1 inputs, 14 outputs, 158 parameters",
       "structure": "StructuralInfo(states=9, algebraic=394, outputs=14, equations=1538, unknowns=1538, balanced=true, matched=false, blocks=0, algebraic_loops=0)",
       "structure_n_equations": 1538,
@@ -93,8 +148,19 @@
       "n_parameters": 158,
       "n_inputs": 1,
       "n_outputs": 14,
+      "state_names": [
+        "FirstStage.r_0",
+        "FirstStage.v_0",
+        "FirstStage.body.frame_a.r_0",
+        "FirstStage.body.v_0",
+        "FirstStage.body.w_a",
+        "FirstStage.body.Q",
+        "absoluteVelocity.der1[1].u",
+        "absoluteVelocity.der1[2].u",
+        "absoluteVelocity.der1[3].u"
+      ],
       "flat_dict_chars": 2401886,
-      "flat_dict_s": 0.09,
+      "flat_dict_s": 0.11,
       "flat_dict_keys": {
         "predefined_string_declaration": "4",
         "predefined_types": 5,
@@ -132,10 +198,36 @@
         "instance_relations": 840
       },
       "n_equations_flat": 154,
-      "simulate_s": 0.17,
+      "n_states_scalar": 22,
+      "n_states_scalar_missing": 0,
+      "n_algebraics_scalar": 1439,
+      "state_dims": {
+        "FirstStage.r_0": [
+          3
+        ],
+        "FirstStage.v_0": [
+          3
+        ],
+        "FirstStage.body.frame_a.r_0": [
+          3
+        ],
+        "FirstStage.body.v_0": [
+          3
+        ],
+        "FirstStage.body.w_a": [
+          3
+        ],
+        "FirstStage.body.Q": [
+          4
+        ],
+        "absoluteVelocity.der1[1].u": [],
+        "absoluteVelocity.der1[2].u": [],
+        "absoluteVelocity.der1[3].u": []
+      },
+      "simulate_s": 0.16,
       "simulate_error": "SimulationError: DAE structural proof failed: invalid structural IR contract without source span: independent state selection: input `throttle` has neither a checked default nor a runtime value",
       "child_returncode": 0,
-      "child_wall_s": 7.82,
+      "child_wall_s": 8.6,
       "msl": "3.2.3"
     },
     {
@@ -145,10 +237,12 @@
       "rumoca": "0.10.2",
       "compiled": false,
       "simulated": false,
-      "compile_s": 15.13,
+      "sim_t_end_requested": 1.0,
+      "sim_dt": 0.1,
+      "compile_s": 16.56,
       "compile_error": "CompileError: todae failed: RocketLanding.LanderWithHorizontalVelocity.RetrogradeRocketLanding failed in ToDae: unsupported Flat semantic owner `function shape proof`: dependent extent is not an exact Integer expression over proven shape axes",
       "child_returncode": 0,
-      "child_wall_s": 16.52,
+      "child_wall_s": 17.76,
       "msl": "3.2.3"
     },
     {
@@ -158,7 +252,9 @@
       "rumoca": "0.10.2",
       "compiled": true,
       "simulated": true,
-      "compile_s": 57.45,
+      "sim_t_end_requested": 3.0,
+      "sim_dt": 0.1,
+      "compile_s": 11.39,
       "summary": "DroneLibrary.Tests.motorTest \u2014 31 states, 917 algebraic, 0 inputs, 33 outputs, 452 parameters",
       "structure": "StructuralInfo(states=31, algebraic=917, outputs=33, equations=3466, unknowns=3466, balanced=true, matched=true, blocks=2111, algebraic_loops=8)",
       "structure_n_equations": 3466,
@@ -169,8 +265,41 @@
       "n_parameters": 452,
       "n_inputs": 0,
       "n_outputs": 33,
+      "state_names": [
+        "dCmotor.w",
+        "propellerRev1.dCMotor.dCmotor.w",
+        "propellerRev1.rotor3_1.revolute.phi",
+        "propellerRev1.rotor3_1.revolute.w",
+        "propellerRev1.rotor3_1.revolute.constantTorque.phi",
+        "propellerRev1.blades.bodyShape5.r_0",
+        "propellerRev1.blades.bodyShape5.v_0",
+        "propellerRev1.blades.bodyShape5.body.frame_a.r_0",
+        "propellerRev1.blades.bodyShape5.body.v_0",
+        "propellerRev1.blades.bodyShape5.body.w_a",
+        "propellerRev1.blades.bodyShape5.body.Q",
+        "propellerRev1.blades.bodyShape4.r_0",
+        "propellerRev1.blades.bodyShape4.v_0",
+        "propellerRev1.blades.bodyShape4.body.frame_a.r_0",
+        "propellerRev1.blades.bodyShape4.body.v_0",
+        "propellerRev1.blades.bodyShape4.body.w_a",
+        "propellerRev2.dCMotor.dCmotor.w",
+        "propellerRev2.rotor3_1.revolute.phi",
+        "propellerRev2.rotor3_1.revolute.w",
+        "propellerRev2.rotor3_1.revolute.constantTorque.phi",
+        "propellerRev2.blades.bodyShape5.r_0",
+        "propellerRev2.blades.bodyShape5.v_0",
+        "propellerRev2.blades.bodyShape5.body.frame_a.r_0",
+        "propellerRev2.blades.bodyShape5.body.v_0",
+        "propellerRev2.blades.bodyShape5.body.w_a",
+        "propellerRev2.blades.bodyShape5.body.Q",
+        "propellerRev2.blades.bodyShape4.r_0",
+        "propellerRev2.blades.bodyShape4.v_0",
+        "propellerRev2.blades.bodyShape4.body.frame_a.r_0",
+        "propellerRev2.blades.bodyShape4.body.v_0",
+        "propellerRev2.blades.bodyShape4.body.w_a"
+      ],
       "flat_dict_chars": 6480832,
-      "flat_dict_s": 0.4,
+      "flat_dict_s": 0.41,
       "flat_dict_keys": {
         "predefined_string_declaration": "4",
         "predefined_types": 5,
@@ -208,13 +337,164 @@
         "instance_relations": 2227
       },
       "n_equations_flat": 670,
-      "simulate_s": 4.22,
-      "sim_n_points": 12,
-      "sim_t_end": 1.0,
+      "n_states_scalar": 77,
+      "n_states_scalar_missing": 0,
+      "n_algebraics_scalar": 3324,
+      "state_dims": {
+        "dCmotor.w": [],
+        "propellerRev1.dCMotor.dCmotor.w": [],
+        "propellerRev1.rotor3_1.revolute.phi": [],
+        "propellerRev1.rotor3_1.revolute.w": [],
+        "propellerRev1.rotor3_1.revolute.constantTorque.phi": [],
+        "propellerRev1.blades.bodyShape5.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "propellerRev1.blades.bodyShape4.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "propellerRev2.dCMotor.dCmotor.w": [],
+        "propellerRev2.rotor3_1.revolute.phi": [],
+        "propellerRev2.rotor3_1.revolute.w": [],
+        "propellerRev2.rotor3_1.revolute.constantTorque.phi": [],
+        "propellerRev2.blades.bodyShape5.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "propellerRev2.blades.bodyShape4.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.body.w_a": [
+          3
+        ]
+      },
+      "simulate_s": 4.02,
+      "sim_n_points": 33,
+      "sim_t_end": 3.0,
       "sim_termination": null,
       "sim_n_names": 3625,
+      "sim_n_varying": 438,
+      "sim_n_non_finite": 0,
+      "sim_key_signals": {
+        "dCmotor.w": {
+          "first": 0.0,
+          "last": 0.09900932916106724,
+          "min": 0.0,
+          "max": 10.00000000023443
+        },
+        "dCmotor.torque": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 2.0
+        },
+        "feedback.y": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "propellerRev1.dCMotor.dCmotor.w": {
+          "first": 0.0,
+          "last": 0.09900932916106724,
+          "min": 0.0,
+          "max": 10.00000000023443
+        },
+        "propellerRev1.dCMotor.dCmotor.torque": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 2.0
+        },
+        "propellerRev1.rotor3_1.revolute.w": {
+          "first": 0.0,
+          "last": -1.4733646723235734e-05,
+          "min": -0.1500000000229597,
+          "max": 0.0
+        },
+        "propellerRev1.blades.bodyShape5.r_0[2]": {
+          "first": 0.0,
+          "last": -44.12992504126465,
+          "min": -44.12992504126465,
+          "max": 0.0
+        },
+        "propellerRev2.dCMotor.dCmotor.w": {
+          "first": 0.0,
+          "last": 0.09900932916106724,
+          "min": 0.0,
+          "max": 10.00000000023443
+        },
+        "propellerRev2.dCMotor.dCmotor.torque": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 2.0
+        },
+        "propellerRev2.rotor3_1.revolute.w": {
+          "first": 0.0,
+          "last": -1.4733646723235734e-05,
+          "min": -0.1500000000229597,
+          "max": 0.0
+        },
+        "propellerRev2.blades.bodyShape5.r_0[2]": {
+          "first": 0.0,
+          "last": -44.12992504126465,
+          "min": -44.12992504126465,
+          "max": 0.0
+        }
+      },
+      "n_states_scalar_from_results": 77,
       "child_returncode": 0,
-      "child_wall_s": 66.87,
+      "child_wall_s": 20.41,
       "msl": "4.0.0"
     },
     {
@@ -224,7 +504,9 @@
       "rumoca": "0.10.2",
       "compiled": true,
       "simulated": false,
-      "compile_s": 13.29,
+      "sim_t_end_requested": 1.0,
+      "sim_dt": 0.1,
+      "compile_s": 12.91,
       "summary": "DroneLibrary.Tests.propellerTest \u2014 56 states, 1110 algebraic, 0 inputs, 17 outputs, 751 parameters",
       "structure": "StructuralInfo(states=56, algebraic=1110, outputs=17, equations=4256, unknowns=4256, balanced=true, matched=false, blocks=0, algebraic_loops=0)",
       "structure_n_equations": 4256,
@@ -235,8 +517,66 @@
       "n_parameters": 751,
       "n_inputs": 0,
       "n_outputs": 17,
+      "state_names": [
+        "bodyShape.r_0",
+        "bodyShape.v_0",
+        "bodyShape.body.frame_a.r_0",
+        "bodyShape.body.v_0",
+        "bodyShape.body.w_a",
+        "bodyShape1.r_0",
+        "bodyShape1.v_0",
+        "bodyShape1.body.frame_a.r_0",
+        "bodyShape1.body.v_0",
+        "bodyShape1.body.w_a",
+        "bodyShape2.r_0",
+        "bodyShape2.v_0",
+        "bodyShape2.body.frame_a.r_0",
+        "bodyShape2.body.v_0",
+        "bodyShape2.body.w_a",
+        "bodyShape3.r_0",
+        "bodyShape3.v_0",
+        "bodyShape3.body.frame_a.r_0",
+        "bodyShape3.body.v_0",
+        "bodyShape3.body.w_a",
+        "bodyCylinder.r_0",
+        "bodyCylinder.v_0",
+        "bodyCylinder.body.frame_a.r_0",
+        "bodyCylinder.body.v_0",
+        "bodyCylinder.body.w_a",
+        "bodyCylinder.body.Q",
+        "pointMass.r_0",
+        "pointMass.v_0",
+        "bodyShape4.r_0",
+        "bodyShape4.v_0",
+        "bodyShape4.body.frame_a.r_0",
+        "bodyShape4.body.v_0",
+        "bodyShape4.body.w_a",
+        "bodyShape5.r_0",
+        "bodyShape5.v_0",
+        "bodyShape5.body.frame_a.r_0",
+        "bodyShape5.body.v_0",
+        "bodyShape5.body.w_a",
+        "revolute.phi",
+        "revolute.w",
+        "revolute.constantTorque.phi",
+        "bodyShape6.r_0",
+        "bodyShape6.v_0",
+        "bodyShape6.body.frame_a.r_0",
+        "bodyShape6.body.v_0",
+        "bodyShape6.body.w_a",
+        "bodyShape7.r_0",
+        "bodyShape7.v_0",
+        "bodyShape7.body.frame_a.r_0",
+        "bodyShape7.body.v_0",
+        "bodyShape7.body.w_a",
+        "revolute1.phi",
+        "revolute1.w",
+        "revolute1.constantTorque.phi",
+        "realDer.x",
+        "integrator.y"
+      ],
       "flat_dict_chars": 7628527,
-      "flat_dict_s": 0.38,
+      "flat_dict_s": 0.43,
       "flat_dict_keys": {
         "predefined_string_declaration": "4",
         "predefined_types": 5,
@@ -274,10 +614,167 @@
         "instance_relations": 2805
       },
       "n_equations_flat": 621,
-      "simulate_s": 25.18,
+      "n_states_scalar": 153,
+      "n_states_scalar_missing": 0,
+      "n_algebraics_scalar": 3831,
+      "state_dims": {
+        "bodyShape.r_0": [
+          3
+        ],
+        "bodyShape.v_0": [
+          3
+        ],
+        "bodyShape.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape.body.v_0": [
+          3
+        ],
+        "bodyShape.body.w_a": [
+          3
+        ],
+        "bodyShape1.r_0": [
+          3
+        ],
+        "bodyShape1.v_0": [
+          3
+        ],
+        "bodyShape1.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape1.body.v_0": [
+          3
+        ],
+        "bodyShape1.body.w_a": [
+          3
+        ],
+        "bodyShape2.r_0": [
+          3
+        ],
+        "bodyShape2.v_0": [
+          3
+        ],
+        "bodyShape2.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape2.body.v_0": [
+          3
+        ],
+        "bodyShape2.body.w_a": [
+          3
+        ],
+        "bodyShape3.r_0": [
+          3
+        ],
+        "bodyShape3.v_0": [
+          3
+        ],
+        "bodyShape3.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape3.body.v_0": [
+          3
+        ],
+        "bodyShape3.body.w_a": [
+          3
+        ],
+        "bodyCylinder.r_0": [
+          3
+        ],
+        "bodyCylinder.v_0": [
+          3
+        ],
+        "bodyCylinder.body.frame_a.r_0": [
+          3
+        ],
+        "bodyCylinder.body.v_0": [
+          3
+        ],
+        "bodyCylinder.body.w_a": [
+          3
+        ],
+        "bodyCylinder.body.Q": [
+          4
+        ],
+        "pointMass.r_0": [
+          3
+        ],
+        "pointMass.v_0": [
+          3
+        ],
+        "bodyShape4.r_0": [
+          3
+        ],
+        "bodyShape4.v_0": [
+          3
+        ],
+        "bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape4.body.v_0": [
+          3
+        ],
+        "bodyShape4.body.w_a": [
+          3
+        ],
+        "bodyShape5.r_0": [
+          3
+        ],
+        "bodyShape5.v_0": [
+          3
+        ],
+        "bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape5.body.v_0": [
+          3
+        ],
+        "bodyShape5.body.w_a": [
+          3
+        ],
+        "revolute.phi": [],
+        "revolute.w": [],
+        "revolute.constantTorque.phi": [],
+        "bodyShape6.r_0": [
+          3
+        ],
+        "bodyShape6.v_0": [
+          3
+        ],
+        "bodyShape6.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape6.body.v_0": [
+          3
+        ],
+        "bodyShape6.body.w_a": [
+          3
+        ],
+        "bodyShape7.r_0": [
+          3
+        ],
+        "bodyShape7.v_0": [
+          3
+        ],
+        "bodyShape7.body.frame_a.r_0": [
+          3
+        ],
+        "bodyShape7.body.v_0": [
+          3
+        ],
+        "bodyShape7.body.w_a": [
+          3
+        ],
+        "revolute1.phi": [],
+        "revolute1.w": [],
+        "revolute1.constantTorque.phi": [],
+        "realDer.x": [],
+        "integrator.y": []
+      },
+      "simulate_s": 29.66,
       "simulate_error": "SimulationError: solve-IR evaluation failed: algebraic projection did not converge at event boundary: worst scaled residual row=2227 target=force.frame_b.R.T[2,3] value=1.431604e0 ratio=8.343642e5 norm=1.721900e0 row_scale=1.715802e0 scaled_tolerance=1.715802e-6",
       "child_returncode": 0,
-      "child_wall_s": 59.38,
+      "child_wall_s": 66.37,
       "msl": "4.0.0"
     },
     {
@@ -287,7 +784,9 @@
       "rumoca": "0.10.2",
       "compiled": true,
       "simulated": true,
-      "compile_s": 13.51,
+      "sim_t_end_requested": 1.0,
+      "sim_dt": 0.1,
+      "compile_s": 12.58,
       "summary": "DroneLibrary.Tests.simpleHoverTest \u2014 90 states, 1895 algebraic, 0 inputs, 67 outputs, 1196 parameters",
       "structure": "StructuralInfo(states=90, algebraic=1895, outputs=67, equations=7613, unknowns=7613, balanced=true, matched=false, blocks=0, algebraic_loops=0)",
       "structure_n_equations": 7613,
@@ -298,8 +797,100 @@
       "n_parameters": 1196,
       "n_inputs": 0,
       "n_outputs": 67,
+      "state_names": [
+        "droneChassis1.bodyShape.r_0",
+        "droneChassis1.bodyShape.v_0",
+        "droneChassis1.bodyShape.body.frame_a.r_0",
+        "droneChassis1.bodyShape.body.v_0",
+        "droneChassis1.bodyShape.body.w_a",
+        "droneChassis1.bodyShape1.r_0",
+        "droneChassis1.bodyShape1.v_0",
+        "droneChassis1.bodyShape1.body.frame_a.r_0",
+        "droneChassis1.bodyShape1.body.v_0",
+        "droneChassis1.bodyShape1.body.w_a",
+        "droneChassis1.bodyShape2.r_0",
+        "droneChassis1.bodyShape2.v_0",
+        "droneChassis1.bodyShape2.body.frame_a.r_0",
+        "droneChassis1.bodyShape2.body.v_0",
+        "droneChassis1.bodyShape2.body.w_a",
+        "droneChassis1.bodyShape3.r_0",
+        "droneChassis1.bodyShape3.v_0",
+        "droneChassis1.bodyShape3.body.frame_a.r_0",
+        "droneChassis1.bodyShape3.body.v_0",
+        "droneChassis1.bodyShape3.body.w_a",
+        "droneChassis1.bodyCylinder.r_0",
+        "droneChassis1.bodyCylinder.v_0",
+        "droneChassis1.bodyCylinder.body.frame_a.r_0",
+        "droneChassis1.bodyCylinder.body.v_0",
+        "droneChassis1.bodyCylinder.body.w_a",
+        "droneChassis1.bodyCylinder.body.Q",
+        "droneChassis1.pointMass.r_0",
+        "droneChassis1.pointMass.v_0",
+        "PID.I.y",
+        "PID.D.x",
+        "propellerRev.dCMotor.dCmotor.w",
+        "propellerRev.rotor3_1.revolute.phi",
+        "propellerRev.rotor3_1.revolute.w",
+        "propellerRev.rotor3_1.revolute.constantTorque.phi",
+        "propellerRev.blades.bodyShape5.r_0",
+        "propellerRev.blades.bodyShape5.v_0",
+        "propellerRev.blades.bodyShape5.body.frame_a.r_0",
+        "propellerRev.blades.bodyShape5.body.v_0",
+        "propellerRev.blades.bodyShape5.body.w_a",
+        "propellerRev.blades.bodyShape5.body.Q",
+        "propellerRev.blades.bodyShape4.r_0",
+        "propellerRev.blades.bodyShape4.v_0",
+        "propellerRev.blades.bodyShape4.body.frame_a.r_0",
+        "propellerRev.blades.bodyShape4.body.v_0",
+        "propellerRev.blades.bodyShape4.body.w_a",
+        "propellerRev1.dCMotor.dCmotor.w",
+        "propellerRev1.rotor3_1.revolute.phi",
+        "propellerRev1.rotor3_1.revolute.w",
+        "propellerRev1.rotor3_1.revolute.constantTorque.phi",
+        "propellerRev1.blades.bodyShape5.r_0",
+        "propellerRev1.blades.bodyShape5.v_0",
+        "propellerRev1.blades.bodyShape5.body.frame_a.r_0",
+        "propellerRev1.blades.bodyShape5.body.v_0",
+        "propellerRev1.blades.bodyShape5.body.w_a",
+        "propellerRev1.blades.bodyShape5.body.Q",
+        "propellerRev1.blades.bodyShape4.r_0",
+        "propellerRev1.blades.bodyShape4.v_0",
+        "propellerRev1.blades.bodyShape4.body.frame_a.r_0",
+        "propellerRev1.blades.bodyShape4.body.v_0",
+        "propellerRev1.blades.bodyShape4.body.w_a",
+        "propellerRev3.dCMotor.dCmotor.w",
+        "propellerRev3.rotor3_1.revolute.phi",
+        "propellerRev3.rotor3_1.revolute.w",
+        "propellerRev3.rotor3_1.revolute.constantTorque.phi",
+        "propellerRev3.blades.bodyShape5.r_0",
+        "propellerRev3.blades.bodyShape5.v_0",
+        "propellerRev3.blades.bodyShape5.body.frame_a.r_0",
+        "propellerRev3.blades.bodyShape5.body.v_0",
+        "propellerRev3.blades.bodyShape5.body.w_a",
+        "propellerRev3.blades.bodyShape5.body.Q",
+        "propellerRev3.blades.bodyShape4.r_0",
+        "propellerRev3.blades.bodyShape4.v_0",
+        "propellerRev3.blades.bodyShape4.body.frame_a.r_0",
+        "propellerRev3.blades.bodyShape4.body.v_0",
+        "propellerRev3.blades.bodyShape4.body.w_a",
+        "propellerRev2.dCMotor.dCmotor.w",
+        "propellerRev2.rotor3_1.revolute.phi",
+        "propellerRev2.rotor3_1.revolute.w",
+        "propellerRev2.rotor3_1.revolute.constantTorque.phi",
+        "propellerRev2.blades.bodyShape5.r_0",
+        "propellerRev2.blades.bodyShape5.v_0",
+        "propellerRev2.blades.bodyShape5.body.frame_a.r_0",
+        "propellerRev2.blades.bodyShape5.body.v_0",
+        "propellerRev2.blades.bodyShape5.body.w_a",
+        "propellerRev2.blades.bodyShape5.body.Q",
+        "propellerRev2.blades.bodyShape4.r_0",
+        "propellerRev2.blades.bodyShape4.v_0",
+        "propellerRev2.blades.bodyShape4.body.frame_a.r_0",
+        "propellerRev2.blades.bodyShape4.body.v_0",
+        "propellerRev2.blades.bodyShape4.body.w_a"
+      ],
       "flat_dict_chars": 15017967,
-      "flat_dict_s": 0.67,
+      "flat_dict_s": 0.51,
       "flat_dict_keys": {
         "predefined_string_declaration": "4",
         "predefined_types": 5,
@@ -337,13 +928,353 @@
         "instance_relations": 5018
       },
       "n_equations_flat": 1595,
-      "simulate_s": 63.9,
+      "n_states_scalar": 239,
+      "n_states_scalar_missing": 0,
+      "n_algebraics_scalar": 6888,
+      "state_dims": {
+        "droneChassis1.bodyShape.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape.body.frame_a.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape.body.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape.body.w_a": [
+          3
+        ],
+        "droneChassis1.bodyShape1.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape1.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape1.body.frame_a.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape1.body.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape1.body.w_a": [
+          3
+        ],
+        "droneChassis1.bodyShape2.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape2.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape2.body.frame_a.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape2.body.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape2.body.w_a": [
+          3
+        ],
+        "droneChassis1.bodyShape3.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape3.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape3.body.frame_a.r_0": [
+          3
+        ],
+        "droneChassis1.bodyShape3.body.v_0": [
+          3
+        ],
+        "droneChassis1.bodyShape3.body.w_a": [
+          3
+        ],
+        "droneChassis1.bodyCylinder.r_0": [
+          3
+        ],
+        "droneChassis1.bodyCylinder.v_0": [
+          3
+        ],
+        "droneChassis1.bodyCylinder.body.frame_a.r_0": [
+          3
+        ],
+        "droneChassis1.bodyCylinder.body.v_0": [
+          3
+        ],
+        "droneChassis1.bodyCylinder.body.w_a": [
+          3
+        ],
+        "droneChassis1.bodyCylinder.body.Q": [
+          4
+        ],
+        "droneChassis1.pointMass.r_0": [
+          3
+        ],
+        "droneChassis1.pointMass.v_0": [
+          3
+        ],
+        "PID.I.y": [],
+        "PID.D.x": [],
+        "propellerRev.dCMotor.dCmotor.w": [],
+        "propellerRev.rotor3_1.revolute.phi": [],
+        "propellerRev.rotor3_1.revolute.w": [],
+        "propellerRev.rotor3_1.revolute.constantTorque.phi": [],
+        "propellerRev.blades.bodyShape5.r_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape5.v_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "propellerRev.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "propellerRev.blades.bodyShape4.r_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape4.v_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "propellerRev.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "propellerRev1.dCMotor.dCmotor.w": [],
+        "propellerRev1.rotor3_1.revolute.phi": [],
+        "propellerRev1.rotor3_1.revolute.w": [],
+        "propellerRev1.rotor3_1.revolute.constantTorque.phi": [],
+        "propellerRev1.blades.bodyShape5.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "propellerRev1.blades.bodyShape4.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "propellerRev1.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "propellerRev3.dCMotor.dCmotor.w": [],
+        "propellerRev3.rotor3_1.revolute.phi": [],
+        "propellerRev3.rotor3_1.revolute.w": [],
+        "propellerRev3.rotor3_1.revolute.constantTorque.phi": [],
+        "propellerRev3.blades.bodyShape5.r_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape5.v_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "propellerRev3.blades.bodyShape4.r_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape4.v_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "propellerRev3.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "propellerRev2.dCMotor.dCmotor.w": [],
+        "propellerRev2.rotor3_1.revolute.phi": [],
+        "propellerRev2.rotor3_1.revolute.w": [],
+        "propellerRev2.rotor3_1.revolute.constantTorque.phi": [],
+        "propellerRev2.blades.bodyShape5.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "propellerRev2.blades.bodyShape4.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "propellerRev2.blades.bodyShape4.body.w_a": [
+          3
+        ]
+      },
+      "simulate_s": 53.14,
       "sim_n_points": 12,
       "sim_t_end": 1.0,
       "sim_termination": null,
       "sim_n_names": 8305,
+      "sim_n_varying": 4459,
+      "sim_n_non_finite": 0,
+      "sim_key_signals": {
+        "droneChassis1.frame_a.r_0[3]": {
+          "first": 0.0,
+          "last": -3.3497436259193756,
+          "min": -3.3497436259193756,
+          "max": 0.0
+        },
+        "ramp.y": {
+          "first": 0.0,
+          "last": 5.0,
+          "min": 0.0,
+          "max": 5.0
+        },
+        "PID.u": {
+          "first": 0.0,
+          "last": 8.34974350149323,
+          "min": 0.0,
+          "max": 8.34974350149323
+        },
+        "feedback.y": {
+          "first": 0.0,
+          "last": 8.34974350149323,
+          "min": 0.0,
+          "max": 8.34974350149323
+        },
+        "propellerRev.dCMotor.dCmotor.w": {
+          "first": 0.0,
+          "last": 55.11153663308253,
+          "min": 0.0,
+          "max": 55.37015534194035
+        },
+        "propellerRev.dCMotor.dCmotor.torque": {
+          "first": 0.0,
+          "last": 60.803787212761186,
+          "min": 0.0,
+          "max": 61.390164681067496
+        },
+        "propellerRev.rotor3_1.revolute.w": {
+          "first": 0.0,
+          "last": 4.551076503731279,
+          "min": 0.0,
+          "max": 4.592661985254234
+        },
+        "propellerRev.blades.bodyShape5.r_0[2]": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "propellerRev1.dCMotor.dCmotor.w": {
+          "first": 0.0,
+          "last": 55.11153663308253,
+          "min": 0.0,
+          "max": 55.37015534194035
+        },
+        "propellerRev1.dCMotor.dCmotor.torque": {
+          "first": 0.0,
+          "last": 60.803787212761186,
+          "min": 0.0,
+          "max": 61.390164681067496
+        },
+        "propellerRev1.rotor3_1.revolute.w": {
+          "first": 0.0,
+          "last": -4.551158058001571,
+          "min": -4.592765038777186,
+          "max": 0.0
+        },
+        "propellerRev1.blades.bodyShape5.r_0[2]": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "propellerRev3.dCMotor.dCmotor.w": {
+          "first": 0.0,
+          "last": 55.11153663308253,
+          "min": 0.0,
+          "max": 55.37015534194035
+        },
+        "propellerRev3.dCMotor.dCmotor.torque": {
+          "first": 0.0,
+          "last": 60.803787212761186,
+          "min": 0.0,
+          "max": 61.390164681067496
+        },
+        "propellerRev3.rotor3_1.revolute.w": {
+          "first": 0.0,
+          "last": -4.551158058001571,
+          "min": -4.592765038777186,
+          "max": 0.0
+        },
+        "propellerRev3.blades.bodyShape5.r_0[2]": {
+          "first": 0.0,
+          "last": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "n_states_scalar_from_results": 239,
       "child_returncode": 0,
-      "child_wall_s": 132.29,
+      "child_wall_s": 106.68,
       "msl": "4.0.0"
     },
     {
@@ -353,7 +1284,9 @@
       "rumoca": "0.10.2",
       "compiled": true,
       "simulated": false,
-      "compile_s": 13.58,
+      "sim_t_end_requested": 1.0,
+      "sim_dt": 0.1,
+      "compile_s": 15.11,
       "summary": "DroneLibrary.Examples.DroneWithIdealPower.TestSystem \u2014 88 states, 2004 algebraic, 0 inputs, 120 outputs, 1327 parameters",
       "structure": "StructuralInfo(states=88, algebraic=2004, outputs=120, equations=8005, unknowns=8005, balanced=true, matched=false, blocks=0, algebraic_loops=0)",
       "structure_n_equations": 8005,
@@ -364,8 +1297,98 @@
       "n_parameters": 1327,
       "n_inputs": 0,
       "n_outputs": 120,
+      "state_names": [
+        "drone.droneChassis1.bodyShape.r_0",
+        "drone.droneChassis1.bodyShape.v_0",
+        "drone.droneChassis1.bodyShape.body.frame_a.r_0",
+        "drone.droneChassis1.bodyShape.body.v_0",
+        "drone.droneChassis1.bodyShape.body.w_a",
+        "drone.droneChassis1.bodyShape1.r_0",
+        "drone.droneChassis1.bodyShape1.v_0",
+        "drone.droneChassis1.bodyShape1.body.frame_a.r_0",
+        "drone.droneChassis1.bodyShape1.body.v_0",
+        "drone.droneChassis1.bodyShape1.body.w_a",
+        "drone.droneChassis1.bodyShape2.r_0",
+        "drone.droneChassis1.bodyShape2.v_0",
+        "drone.droneChassis1.bodyShape2.body.frame_a.r_0",
+        "drone.droneChassis1.bodyShape2.body.v_0",
+        "drone.droneChassis1.bodyShape2.body.w_a",
+        "drone.droneChassis1.bodyShape3.r_0",
+        "drone.droneChassis1.bodyShape3.v_0",
+        "drone.droneChassis1.bodyShape3.body.frame_a.r_0",
+        "drone.droneChassis1.bodyShape3.body.v_0",
+        "drone.droneChassis1.bodyShape3.body.w_a",
+        "drone.droneChassis1.bodyCylinder.r_0",
+        "drone.droneChassis1.bodyCylinder.v_0",
+        "drone.droneChassis1.bodyCylinder.body.frame_a.r_0",
+        "drone.droneChassis1.bodyCylinder.body.v_0",
+        "drone.droneChassis1.bodyCylinder.body.w_a",
+        "drone.droneChassis1.bodyCylinder.body.Q",
+        "drone.droneChassis1.pointMass.r_0",
+        "drone.droneChassis1.pointMass.v_0",
+        "drone.propellerRev.dCMotor.dCmotor.w",
+        "drone.propellerRev.rotor3_1.revolute.phi",
+        "drone.propellerRev.rotor3_1.revolute.w",
+        "drone.propellerRev.rotor3_1.revolute.constantTorque.phi",
+        "drone.propellerRev.blades.bodyShape5.r_0",
+        "drone.propellerRev.blades.bodyShape5.v_0",
+        "drone.propellerRev.blades.bodyShape5.body.frame_a.r_0",
+        "drone.propellerRev.blades.bodyShape5.body.v_0",
+        "drone.propellerRev.blades.bodyShape5.body.w_a",
+        "drone.propellerRev.blades.bodyShape5.body.Q",
+        "drone.propellerRev.blades.bodyShape4.r_0",
+        "drone.propellerRev.blades.bodyShape4.v_0",
+        "drone.propellerRev.blades.bodyShape4.body.frame_a.r_0",
+        "drone.propellerRev.blades.bodyShape4.body.v_0",
+        "drone.propellerRev.blades.bodyShape4.body.w_a",
+        "drone.propellerRev1.dCMotor.dCmotor.w",
+        "drone.propellerRev1.rotor3_1.revolute.phi",
+        "drone.propellerRev1.rotor3_1.revolute.w",
+        "drone.propellerRev1.rotor3_1.revolute.constantTorque.phi",
+        "drone.propellerRev1.blades.bodyShape5.r_0",
+        "drone.propellerRev1.blades.bodyShape5.v_0",
+        "drone.propellerRev1.blades.bodyShape5.body.frame_a.r_0",
+        "drone.propellerRev1.blades.bodyShape5.body.v_0",
+        "drone.propellerRev1.blades.bodyShape5.body.w_a",
+        "drone.propellerRev1.blades.bodyShape5.body.Q",
+        "drone.propellerRev1.blades.bodyShape4.r_0",
+        "drone.propellerRev1.blades.bodyShape4.v_0",
+        "drone.propellerRev1.blades.bodyShape4.body.frame_a.r_0",
+        "drone.propellerRev1.blades.bodyShape4.body.v_0",
+        "drone.propellerRev1.blades.bodyShape4.body.w_a",
+        "drone.propellerRev2.dCMotor.dCmotor.w",
+        "drone.propellerRev2.rotor3_1.revolute.phi",
+        "drone.propellerRev2.rotor3_1.revolute.w",
+        "drone.propellerRev2.rotor3_1.revolute.constantTorque.phi",
+        "drone.propellerRev2.blades.bodyShape5.r_0",
+        "drone.propellerRev2.blades.bodyShape5.v_0",
+        "drone.propellerRev2.blades.bodyShape5.body.frame_a.r_0",
+        "drone.propellerRev2.blades.bodyShape5.body.v_0",
+        "drone.propellerRev2.blades.bodyShape5.body.w_a",
+        "drone.propellerRev2.blades.bodyShape5.body.Q",
+        "drone.propellerRev2.blades.bodyShape4.r_0",
+        "drone.propellerRev2.blades.bodyShape4.v_0",
+        "drone.propellerRev2.blades.bodyShape4.body.frame_a.r_0",
+        "drone.propellerRev2.blades.bodyShape4.body.v_0",
+        "drone.propellerRev2.blades.bodyShape4.body.w_a",
+        "drone.propellerRev3.dCMotor.dCmotor.w",
+        "drone.propellerRev3.rotor3_1.revolute.phi",
+        "drone.propellerRev3.rotor3_1.revolute.w",
+        "drone.propellerRev3.rotor3_1.revolute.constantTorque.phi",
+        "drone.propellerRev3.blades.bodyShape5.r_0",
+        "drone.propellerRev3.blades.bodyShape5.v_0",
+        "drone.propellerRev3.blades.bodyShape5.body.frame_a.r_0",
+        "drone.propellerRev3.blades.bodyShape5.body.v_0",
+        "drone.propellerRev3.blades.bodyShape5.body.w_a",
+        "drone.propellerRev3.blades.bodyShape5.body.Q",
+        "drone.propellerRev3.blades.bodyShape4.r_0",
+        "drone.propellerRev3.blades.bodyShape4.v_0",
+        "drone.propellerRev3.blades.bodyShape4.body.frame_a.r_0",
+        "drone.propellerRev3.blades.bodyShape4.body.v_0",
+        "drone.propellerRev3.blades.bodyShape4.body.w_a"
+      ],
       "flat_dict_chars": 17558210,
-      "flat_dict_s": 0.85,
+      "flat_dict_s": 0.59,
       "flat_dict_keys": {
         "predefined_string_declaration": "4",
         "predefined_types": 5,
@@ -403,10 +1426,247 @@
         "instance_relations": 5529
       },
       "n_equations_flat": 1745,
-      "simulate_s": 66.42,
+      "n_states_scalar": 237,
+      "n_states_scalar_missing": 0,
+      "n_algebraics_scalar": 7129,
+      "state_dims": {
+        "drone.droneChassis1.bodyShape.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape.body.frame_a.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape.body.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape.body.w_a": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape1.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape1.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape1.body.frame_a.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape1.body.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape1.body.w_a": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape2.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape2.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape2.body.frame_a.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape2.body.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape2.body.w_a": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape3.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape3.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape3.body.frame_a.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape3.body.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyShape3.body.w_a": [
+          3
+        ],
+        "drone.droneChassis1.bodyCylinder.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyCylinder.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyCylinder.body.frame_a.r_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyCylinder.body.v_0": [
+          3
+        ],
+        "drone.droneChassis1.bodyCylinder.body.w_a": [
+          3
+        ],
+        "drone.droneChassis1.bodyCylinder.body.Q": [
+          4
+        ],
+        "drone.droneChassis1.pointMass.r_0": [
+          3
+        ],
+        "drone.droneChassis1.pointMass.v_0": [
+          3
+        ],
+        "drone.propellerRev.dCMotor.dCmotor.w": [],
+        "drone.propellerRev.rotor3_1.revolute.phi": [],
+        "drone.propellerRev.rotor3_1.revolute.w": [],
+        "drone.propellerRev.rotor3_1.revolute.constantTorque.phi": [],
+        "drone.propellerRev.blades.bodyShape5.r_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape5.v_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "drone.propellerRev.blades.bodyShape4.r_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape4.v_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "drone.propellerRev.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "drone.propellerRev1.dCMotor.dCmotor.w": [],
+        "drone.propellerRev1.rotor3_1.revolute.phi": [],
+        "drone.propellerRev1.rotor3_1.revolute.w": [],
+        "drone.propellerRev1.rotor3_1.revolute.constantTorque.phi": [],
+        "drone.propellerRev1.blades.bodyShape5.r_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape5.v_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "drone.propellerRev1.blades.bodyShape4.r_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape4.v_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "drone.propellerRev1.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "drone.propellerRev2.dCMotor.dCmotor.w": [],
+        "drone.propellerRev2.rotor3_1.revolute.phi": [],
+        "drone.propellerRev2.rotor3_1.revolute.w": [],
+        "drone.propellerRev2.rotor3_1.revolute.constantTorque.phi": [],
+        "drone.propellerRev2.blades.bodyShape5.r_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape5.v_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "drone.propellerRev2.blades.bodyShape4.r_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape4.v_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "drone.propellerRev2.blades.bodyShape4.body.w_a": [
+          3
+        ],
+        "drone.propellerRev3.dCMotor.dCmotor.w": [],
+        "drone.propellerRev3.rotor3_1.revolute.phi": [],
+        "drone.propellerRev3.rotor3_1.revolute.w": [],
+        "drone.propellerRev3.rotor3_1.revolute.constantTorque.phi": [],
+        "drone.propellerRev3.blades.bodyShape5.r_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape5.v_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape5.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape5.body.v_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape5.body.w_a": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape5.body.Q": [
+          4
+        ],
+        "drone.propellerRev3.blades.bodyShape4.r_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape4.v_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape4.body.frame_a.r_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape4.body.v_0": [
+          3
+        ],
+        "drone.propellerRev3.blades.bodyShape4.body.w_a": [
+          3
+        ]
+      },
+      "simulate_s": 56.33,
       "simulate_error": "SimulationError: invalid Solve IR contract: GuardedAssignmentProgram node 0 scalar program 0 has invalid register flow: tensor projection op 4 is invalid: tensor fill has an invalid extent or lane count",
       "child_returncode": 0,
-      "child_wall_s": 141.02,
+      "child_wall_s": 127.51,
       "msl": "4.0.0"
     }
   ]

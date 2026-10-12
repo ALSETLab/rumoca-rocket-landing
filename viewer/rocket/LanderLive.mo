@@ -12,7 +12,7 @@ model LanderLive
   parameter Real cd = 0.2 "Drag coefficient";
   parameter Real g(unit="m/s2") = 9.81 "Gravity";
   parameter Real eps(unit="m/s") = 0.1 "Smoothing of |v| in the drag law";
-  parameter Real t_ign(unit="s") = 4.96 "Autopilot ignition time (minimum-propellant hoverslam found with CasADi)";
+  parameter Real y_ign(unit="m") = 402.45 "Autopilot ignition altitude. The CasADi minimum-propellant hoverslam switches at t = 4.98775 s, i.e. at 402.51 m on the coast (87.1 m/s down); igniting 6 cm lower gives a firm ~1 m/s touchdown instead of a zero-speed graze. Triggered on altitude, not time, so the R reset (which restores the states but not the clock) works.";
   parameter Real v_crash(unit="m/s") = 3.0 "Touchdown speed above which the landing counts as a crash";
   // --- states ---
   Real y(unit="m", start=800, fixed=true) "Altitude above the pad";
@@ -20,6 +20,7 @@ model LanderLive
   Real fuel_mass(unit="kg", start=100, fixed=true) "Propellant mass";
   // --- discrete state latched at touchdown ---
   discrete Real landed(start=0, fixed=true) "1 once the vehicle has touched the pad";
+  discrete Real ignited(start=0, fixed=true) "1 once the autopilot has lit the engine";
   discrete Real touchdown_speed(unit="m/s", start=0, fixed=true) "Vertical velocity at contact";
   // --- algebraic / outputs for the viewer ---
   Real u "Effective throttle 0..1";
@@ -33,7 +34,7 @@ model LanderLive
   output Real vz(unit="m/s") "Up speed (= v)";
 equation
   u = if landed > 0.5 then 0
-      else if autopilot > 0.5 then (if time >= t_ign and fuel_mass > 0 then 1 else 0)
+      else if autopilot > 0.5 then (if ignited > 0.5 and fuel_mass > 0 then 1 else 0)
       else (if fuel_mass > 0 then throttle_cmd else 0);
   thrust = u*Fengine;
   // Same law as RocketLanding (0.5*rho*v^2*S*cd opposing the motion), written smooth: v*sqrt(v^2+eps^2) ~ v*|v|
@@ -41,6 +42,9 @@ equation
   der(y) = if landed > 0.5 then 0 else v;
   der(v) = if landed > 0.5 then 0 else (thrust - Fdrag)/(EmptyRocket + fuel_mass) - g;
   der(fuel_mass) = -u*FuelBurnRate;
+  when y <= y_ign then
+    ignited = 1;
+  end when;
   when y <= 0 then
     landed = 1;
     touchdown_speed = pre(v);
