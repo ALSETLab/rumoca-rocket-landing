@@ -68,13 +68,23 @@ button and a loop mode.
 https://doi.org/10.3384/ecp21181171. Rumoca experiment (models, scripts, 3-D viewer, results):
 https://github.com/ALSETLab/rumoca-rocket-landing.
 
-## 45-second pitch
+## What to tell the presenters (by 12:40)
 
-"In 2021 our lab published an open-source Modelica model of a Falcon 9 first stage coming home, with a
-flight controller that matched SpaceX telemetry. The paper ended by saying the landing could be made
-fuel-optimal. Today Rumoca did that. It compiles our model unchanged in a third of a second and matches
-OpenModelica to a third of a millimetre. Its CasADi export gives the fuel-optimal landing burn: coast, full
-throttle at 4.988 seconds, 10.7 kg of fuel left. One second early or late, you crash. CasADi, CVODES, JAX
-and Rumoca's own simulator agree on that time within a tenth of a millisecond. And instead of the licensed
-DLR visualization from the paper, here it is in Rumoca's free 3-D viewer, landing at 1.8 metres per second,
-on a loop. Paper and models are linked in the gallery. Built with Claude Code in two hours."
+1. Name: Luigi Vanfretti, ALSETLab, RPI.
+2. Question: can Rumoca do what our 2021 Modelica paper left as future work, a fuel-optimal Falcon 9-style
+   landing, and fly it in 3-D without the licensed DLR Visualization library?
+3. Starting model: RocketLanding.SimpleLander.rocket from our open-source ALSETLab/RocketLanding library.
+4. Tool and time: Claude Code, about two hours (10:05 to 12:05).
+5. How I show it: live in Rumoca's 3-D viewer on my laptop, plus one plot; already posted in the gallery.
+
+## 45-second pitch (question, change, result, check, tool and time)
+
+"Question: our 2021 Modelica paper landed a Falcon 9 first stage and named fuel-optimal landing as future
+work. Can Rumoca do it? Change: I re-cast our open-source rocket model so Rumoca exports it to CasADi and JAX,
+and built a scene for Rumoca's own 3-D viewer instead of the licensed DLR library. Result: CasADi plans the
+fuel-optimal burn: full throttle at 4.988 seconds, 10.7 kilograms of fuel left. One second early or late, you
+crash. Check: CasADi, CVODES, JAX and Rumoca's own simulator agree on that time within a tenth of a
+millisecond, and OpenModelica lands the same file softly. Worked with Claude Code for two hours."
+
+Demo timing: click "Land it again" as you start the Result sentence. The engine lights about 5 s later and
+the rocket touches down at about 14 s, inside the 45 s.
