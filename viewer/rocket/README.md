@@ -49,9 +49,6 @@ shows "Missing Rumoca viewer shell". The CLI looks for `packages/rumoca-web/viz/
 
 ```powershell
 & C:\GIT\rumoca-rocket-landing\viewer\rocket\run_viewer.ps1
-umoca-rocket-landingiewer
-ocket
-un_viewer.ps1
 ```
 
 From Git Bash: `bash C:/GIT/rumoca-rocket-landing/viewer/rocket/run_viewer.sh`.

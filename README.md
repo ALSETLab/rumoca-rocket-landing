@@ -95,9 +95,6 @@ costs a few tenths of a metre per second.
 
 `viewer/rocket/` runs `LanderLive.mo` in the Rumoca CLI's interactive Three.js viewer
 (PowerShell: `& C:\GIT\rumoca-rocket-landing\viewer\rocket\run_viewer.ps1`, which opens http://localhost:8080). Space toggles the autopilot, W/S fly
-umoca-rocket-landingiewer
-ocket
-un_viewer.ps1`, which opens http://localhost:8080). Space toggles the autopilot, W/S fly
 the throttle by hand, R resets. The autopilot is the CasADi hoverslam turned into a trigger: ignite when the
 altitude drops through 402.45 m, 6 cm below where the optimal switch time falls on the coast. Rumoca's
 native simulator lands it at 1.3 m/s with 11.7 kg left (both `rk-like` and `auto`); at the exact optimum the
