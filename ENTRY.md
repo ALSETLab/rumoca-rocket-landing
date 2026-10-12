@@ -65,7 +65,8 @@ button and a loop mode.
 0.4.38, OpenModelica 1.27. 2 h 00 min wall time including debugging.
 
 **Links.** Models: https://github.com/ALSETLab/RocketLanding. Paper:
-https://doi.org/10.3384/ecp21181171. Rumoca experiment: repository link to follow.
+https://doi.org/10.3384/ecp21181171. Rumoca experiment (models, scripts, 3-D viewer, results):
+https://github.com/ALSETLab/rumoca-rocket-landing.
 
 ## 45-second pitch
 
