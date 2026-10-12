@@ -7,6 +7,39 @@ function num(v) { const n = Number(v); return Number.isFinite(n) ? n : 0; }
 
 const FENGINE = 2500; // N at full throttle, same as the model parameter
 
+
+// ---- on-screen controls -------------------------------------------------------------------------
+// The viewer page forwards key presses to Rumoca over its WebSocket (viewer.html, document keydown/keyup),
+// so each button simply presses the same key: R = reset (land it again), L = loop toggle, Space = autopilot.
+function pressKey(code, key) {
+  document.dispatchEvent(new KeyboardEvent("keydown", { code, key, bubbles: true }));
+  setTimeout(() => document.dispatchEvent(new KeyboardEvent("keyup", { code, key, bubbles: true })), 120);
+}
+
+function makeControls() {
+  const box = document.createElement("div");
+  box.style.cssText = "position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;" +
+    "display:flex;gap:10px;align-items:center;font:14px system-ui,sans-serif;";
+  const mk = (label, code, key, color) => {
+    const b = document.createElement("button");
+    b.textContent = label;
+    b.style.cssText = "padding:9px 16px;border:0;border-radius:8px;cursor:pointer;font:600 14px system-ui,sans-serif;" +
+      "color:#fff;background:" + color + ";box-shadow:0 2px 6px rgba(0,0,0,.35);";
+    b.addEventListener("click", () => { pressKey(code, key); b.blur(); });
+    box.appendChild(b);
+    return b;
+  };
+  const again = mk("Land it again  (R)", "KeyR", "r", "#007c91");
+  const loop = mk("Loop: ON  (L)", "KeyL", "l", "#4c956c");
+  const auto = mk("Autopilot: ON  (Space)", "Space", " ", "#6b5b95");
+  const status = document.createElement("div");
+  status.style.cssText = "position:fixed;left:50%;bottom:66px;transform:translateX(-50%);z-index:50;" +
+    "padding:6px 14px;border-radius:8px;background:rgba(20,24,28,.72);color:#e8f1f2;font:600 14px system-ui,sans-serif;";
+  document.body.appendChild(status);
+  document.body.appendChild(box);
+  return { again, loop, auto, status };
+}
+
 ctx.onInit = async function (api) {
   const THREE = api.THREE, scene = api.scene, s = api.state;
 
@@ -99,6 +132,7 @@ ctx.onInit = async function (api) {
   scene.add(s.shadow);
 
   if (api.cam) { api.cam.dist = 25; api.cam.elev = 0.12; api.cam.angle = Math.PI / 4; }
+  s.ui = makeControls();
 };
 
 ctx.onFrame = function (api) {
@@ -125,6 +159,29 @@ ctx.onFrame = function (api) {
   const landed = num(get("landed")) > 0.5, crashed = num(get("crashed")) > 0.5;
   s.bodyMat.color.setHex(landed ? (crashed ? 0xd62828 : 0x2fb344) : 0xc9ced3);
   s.bodyMat.emissive.setHex(landed ? (crashed ? 0x5a0000 : 0x0a3a10) : 0x000000);
+
+
+  // On-screen status and button labels
+  if (s.ui) {
+    const on = (v) => v === true || v === 1 || v === "1" || v === "true";
+    const loopOn = on(get("loop")), autoOn = on(get("autopilot"));
+    s.ui.loop.textContent = "Loop: " + (loopOn ? "ON" : "OFF") + "  (L)";
+    s.ui.loop.style.background = loopOn ? "#4c956c" : "#6c757d";
+    s.ui.auto.textContent = "Autopilot: " + (autoOn ? "ON" : "OFF") + "  (Space)";
+    s.ui.auto.style.background = autoOn ? "#6b5b95" : "#6c757d";
+    const flight = Math.round(num(get("flights")) || 1);
+    const alt = Math.max(num(get("pz")), 0), vz = num(get("vz")), fuel = num(get("fuel"));
+    let text;
+    if (landed) {
+      const td = Math.abs(num(get("touchdown_speed")));
+      text = "Flight " + flight + ": " + (crashed ? "CRASH" : "landed") + " at " + td.toFixed(2) + " m/s, " +
+        fuel.toFixed(1) + " kg propellant left" + (loopOn ? "  -  next flight in a few seconds" : "  -  press Land it again");
+    } else {
+      text = "Flight " + flight + ":  altitude " + alt.toFixed(0) + " m,  speed " + Math.abs(vz).toFixed(1) +
+        " m/s,  propellant " + fuel.toFixed(1) + " kg" + (num(get("thrust")) > 0 ? ",  ENGINE ON" : "");
+    }
+    s.ui.status.textContent = text;
+  }
 
   // Altitude trail and shadow
   s.trail.scale.set(1, Math.max(ty, 0.01), 1);

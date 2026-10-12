@@ -94,11 +94,11 @@ costs a few tenths of a metre per second.
 ### 4. Flying it in Rumoca's 3-D viewer
 
 `viewer/rocket/` runs `LanderLive.mo` in the Rumoca CLI's interactive Three.js viewer
-(PowerShell: `& C:\GIT\rumoca-rocket-landing\viewer\rocket\run_viewer.ps1`, which opens http://localhost:8080). Space toggles the autopilot, W/S fly
-the throttle by hand, R resets. The autopilot is the CasADi hoverslam turned into a trigger: ignite when the
-altitude drops through 402.45 m, 6 cm below where the optimal switch time falls on the coast. Rumoca's
-native simulator lands it at 1.3 m/s with 11.7 kg left (both `rk-like` and `auto`); at the exact optimum the
-default solver misses the grazing touchdown event (see findings). Screenshots:
+(PowerShell: `& C:\GIT\rumoca-rocket-landing\viewer\rocket\run_viewer.ps1`, which opens http://localhost:8080). On-screen buttons (or Space, L, R) toggle
+the autopilot and the loop and land it again; W/S fly the throttle by hand. The autopilot is the CasADi hoverslam turned into a trigger: ignite when the
+altitude drops through 402.40 m, 11 cm below where the optimal switch time falls on the coast. Rumoca's
+native simulator lands it at 1.8 m/s with 12.1 kg left (both `rk-like` and `auto`), and loop mode re-flies it
+4 s after each landing; closer to the optimum the default solver misses the grazing touchdown event (see findings). Screenshots:
 `results/reference/viewer_burn.jpg` and `viewer_landed.jpg`. Details in `viewer/rocket/README.md`.
 
 ### 5. How far Rumoca gets with the 3-D MultiBody models (stretch)

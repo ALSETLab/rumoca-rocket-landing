@@ -26,8 +26,8 @@ re-cast `RumocaRocketLanding.Lander` with a throttle input, `start/fixed` initia
 `casadi-ode` targets reject algebraic variables and initialization sections. A second model, `LanderBurn`,
 replays an open-loop coast-then-full-throttle schedule in Rumoca's native simulator and in OpenModelica.
 A third, `LanderLive`, flies in Rumoca's own 3-D viewer with keyboard throttle or an autopilot that ignites
-at the altitude where the CasADi switch falls (402.45 m); Rumoca's native simulator lands it at 1.3 m/s with
-11.7 kg left.
+near the altitude where the CasADi switch falls (402.40 m); Rumoca's native simulator lands it at 1.8 m/s with
+12.1 kg left, and a loop mode re-flies it every 18 s.
 
 **Before/after and checked result.**
 - Rumoca compiles the untouched 2021 model in 0.37 s and simulates 60 s of flight in 5 ms. Against
@@ -62,4 +62,4 @@ touchdown with 10.7 kg of fuel left. One second early you stall and crash, one s
 check: four independent routes, CasADi, CVODES, JAX and Rumoca's own event simulator, agree on the ignition
 time within a tenth of a millisecond, and OpenModelica lands the same file at 0.3 m/s. Along the way we caught
 two event-handling bugs in Rumoca. And here it is in Rumoca's own 3-D viewer: the autopilot lights the
-engine at 402 metres and sets it down at a metre per second. Built with Claude Code in under two hours."
+engine at 402 metres and sets it down at under two metres per second, again and again. Built with Claude Code in under two hours."

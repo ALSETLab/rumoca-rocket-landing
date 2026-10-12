@@ -14,31 +14,35 @@ pad falling at 70 m/s.
 |---|---|
 | `LanderLive.mo` | Self-contained Modelica model: inputs `throttle_cmd` (0..1) and `autopilot` (0/1); states `y`, `v`, `fuel_mass`; latches `ignited`, `landed`, `touchdown_speed`, `crashed`; viewer outputs `position[3]`, `quat[4]`, `thrust`, `vx`, `vy`, `vz`. |
 | `rumoca-scenario.toml` | Rumoca scenario: keyboard input, signal wiring, viewer frame and heads-up display, ports 8080 (HTTP) and 8081 (WebSocket). |
-| `rocket_scene.js` | Three.js scene: ground, grid, landing pad, rocket with legs, thrust-scaled exhaust, chase camera. No external assets. |
+| `rocket_scene.js` | Three.js scene: ground, grid, landing pad, rocket with legs, thrust-scaled exhaust, chase camera, on-screen buttons and a status line. No external assets. |
 | `run_viewer.sh` | Starts the viewer from `C:\GIT\rumoca-web-assets` (see below). |
-| `LanderBatchTest.mo`, `check_autopilot.py`, `batch_autopilot_result.txt` | Batch check of the autopilot with Rumoca's native simulator. |
+| `LanderBatchTest.mo`, `check_loop.py`, `check_loop_margin.py`, `batch_*_result.txt` | Batch checks of the autopilot and loop with Rumoca's native simulator. |
 | `ignition_sweep.txt` | Earlier sweep with a time-triggered autopilot, showing how knife-edge the hoverslam is. |
 
-## The autopilot
+## The autopilot and the loop
 
 The CasADi minimum-propellant solution (`scripts/optimize_landing_casadi.py`) coasts, then burns at full
 throttle from t = 4.98775 s. On the coast that instant is at 402.51 m altitude and 87.1 m/s downward. The
-autopilot ignites when the altitude drops through `y_ign = 402.45 m`, 6 cm lower, so the rocket touches down
-firmly instead of grazing the pad at zero speed. Triggering on altitude rather than time matters because the
-viewer's reset (R) restores the states but not the model clock.
+autopilot ignites when the altitude drops through `y_ign = 402.40 m`, 11 cm lower, so the rocket touches down
+firmly at about 1.8 m/s instead of grazing the pad at zero speed. Triggering on altitude rather than time
+matters because the viewer's reset (R) restores the states but not the model clock.
 
-Batch check (`check_autopilot.py`, Rumoca native simulator, dt 0.01 s):
+Loop mode (on by default, L or the Loop button) waits `hold = 4 s` on the pad after touchdown and then flies
+again from 800 m. The restart is driven by a pad timer state (`pad_timer >= hold`), because the live viewer
+loop did not fire an equivalent time-based condition (`time >= t_land + hold`) that works in batch.
 
-| Ignition altitude | Solver | Touchdown | Speed | Propellant left |
-|---|---|---|---|---|
-| 402.45 m (default) | rk-like | 13.82 s | 1.35 m/s | 11.72 kg |
-| 402.45 m (default) | auto | 13.82 s | 1.31 m/s | 11.68 kg |
-| 402.51 m (CasADi optimum) | rk-like | 13.90 s | 0.34 m/s | 10.92 kg |
-| 402.51 m (CasADi optimum) | auto | 18.42 s | 18.7 m/s, crash | 0 kg |
+Batch checks with Rumoca's native simulator, dt 0.01 s (`check_loop.py`, `check_loop_margin.py`):
+
+| Ignition altitude | rk-like | auto |
+|---|---|---|
+| 402.40 m (default) | 1.80 m/s, 12.1 kg left, lands every 17.8 s | 1.79 m/s, 12.1 kg left |
+| 402.35 m | 2.16 m/s | 2.15 m/s |
+| 402.30 m | 2.46 m/s | 2.46 m/s |
+| 402.45 m | 1.35 m/s | missed touchdown event, crash at 18.6 m/s |
 
 The last row is Rumoca 0.10.2's missed grazing state event: the touchdown when-clause does not fire, the
-rocket climbs again, runs dry and falls. Screenshots of a viewer run: `results/reference/viewer_burn.jpg`
-(burn at 58 m, 34 m/s) and `results/reference/viewer_landed.jpg` (landed, green).
+rocket climbs again, runs dry and falls. Screenshots: `results/reference/viewer_burn.jpg`,
+`viewer_landed.jpg` and `viewer_loop_flight2.jpg`.
 
 ## Run it
 
@@ -59,9 +63,10 @@ Then open <http://localhost:8080>. The viewer runs in real time until you press 
 
 | Key | Action |
 |---|---|
-| Space | Autopilot on or off (starts on) |
+| Land it again (button) or R | Reset to 800 m, 70 m/s down, full tank, and fly again |
+| Loop (button) or L | Loop on or off: re-fly 4 s after every landing (starts on) |
+| Autopilot (button) or Space | Autopilot on or off (starts on) |
 | W / S | Throttle up or down in manual mode (0.7 per second, clamped 0 to 1) |
-| R | Reset to 800 m, 70 m/s down, full tank |
 | T | Real-time pacing on or off |
 | F | Fullscreen |
 | C | Camera |

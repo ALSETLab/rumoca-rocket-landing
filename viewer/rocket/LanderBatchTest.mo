@@ -4,4 +4,5 @@ model LanderBatchTest
 equation
   lander.throttle_cmd = 0;
   lander.autopilot = 1;
+  lander.loop_mode = 1;
 end LanderBatchTest;

@@ -1,0 +1,8 @@
+rk-like: 3 landings in 60 s, flights counter at end = 4, y range [-0.000, 800.0]
+   landed t= 13.78 s  touchdown_speed=-1.802 m/s  fuel_left=12.08 kg  flight=1
+   landed t= 31.56 s  touchdown_speed=-1.802 m/s  fuel_left=12.08 kg  flight=2
+   landed t= 49.34 s  touchdown_speed=-1.802 m/s  fuel_left=12.08 kg  flight=3
+auto: 3 landings in 60 s, flights counter at end = 4, y range [-0.000, 800.0]
+   landed t= 13.78 s  touchdown_speed=-1.793 m/s  fuel_left=12.07 kg  flight=1
+   landed t= 31.56 s  touchdown_speed=-1.793 m/s  fuel_left=12.07 kg  flight=2
+   landed t= 49.35 s  touchdown_speed=-1.793 m/s  fuel_left=12.07 kg  flight=3

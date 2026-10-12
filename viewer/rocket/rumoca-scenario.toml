@@ -36,6 +36,10 @@ default = 0
 type = "bool"
 default = true
 
+[locals.loop]
+type = "bool"
+default = true
+
 # ---- keyboard ---------------------------------------------------------------
 [input]
 mode = "keyboard"
@@ -54,6 +58,11 @@ value = -1
 action = "toggle"
 state = "autopilot"
 debounce_ms = 500
+
+[input.keyboard.keys.l]
+action = "toggle"
+state = "loop"
+debounce_ms = 300
 
 [input.keyboard.keys.r]
 action = "signal"
@@ -78,6 +87,7 @@ targets = ["throttle_input"]
 [signals.model_inputs]
 throttle_cmd = "local:throttle"
 autopilot = { from = "local:autopilot", when_false = 0, when_true = 1 }
+loop_mode = { from = "local:loop", when_false = 0, when_true = 1 }
 
 [signals.viewer]
 px = "model:position[1]"
@@ -96,6 +106,8 @@ landed = "model:landed"
 crashed = "model:crashed"
 touchdown_speed = "model:touchdown_speed"
 autopilot = "local:autopilot"
+loop = "local:loop"
+flights = "model:flights"
 throttle = "local:throttle"
 t = "model:time"
 frame = "runtime:frame_num"
@@ -132,7 +144,11 @@ action = "Autopilot on / off (CasADi hoverslam)"
 
 [[viewer.controls.keyboard]]
 keys = "R"
-action = "Reset to 800 m, -70 m/s"
+action = "Land it again (reset to 800 m, -70 m/s)"
+
+[[viewer.controls.keyboard]]
+keys = "L"
+action = "Loop on / off (re-fly 4 s after landing)"
 
 [[viewer.controls.keyboard]]
 keys = "T"
