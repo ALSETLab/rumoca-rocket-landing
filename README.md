@@ -9,11 +9,39 @@ physics in Python, and (1) reproduce the original simulation against OpenModelic
 minimum-propellant hoverslam landing with CasADi, (3) differentiate the touchdown through JAX, and (4) fly it
 in Rumoca's own 3-D viewer? And how far does it get with the real 3-D MultiBody models of the library?
 
-**Starting model.** `RocketLanding.SimpleLander.rocket` from
-[ALSETLab/RocketLanding](https://github.com/ALSETLab/RocketLanding)
-(C. Canham, M. Podlaski, L. Vanfretti, "Guidance, Navigation, and Control enabling Retrograde Landing of a
-First Stage Rocket", 14th International Modelica Conference, 2021). Point mass, constant thrust while the tank
-has propellant, quadratic drag, 1-D vertical motion. The repository is used untouched.
+## Background: the 2021 paper and the RocketLanding library
+
+C. Canham, M. Podlaski and L. Vanfretti, "Guidance, Navigation, and Control enabling Retrograde Landing of a
+First Stage Rocket," Proceedings of the 14th International Modelica Conference, Linköping, Sweden, 2021,
+[doi:10.3384/ecp21181171](https://doi.org/10.3384/ecp21181171). Models:
+[ALSETLab/RocketLanding](https://github.com/ALSETLab/RocketLanding).
+
+The paper models the first stage of a SpaceX Falcon 9 right after second-stage separation: a 48 m by 3.7 m
+MultiBody cylinder starting at 166 km altitude and 293 m/s horizontal speed, one 914 kN engine,
+three grid fins, altitude-dependent drag and a kerosene/oxygen fuel injector. A flight controller of four
+parts brings it back to a landing pad: a grid-fin controller, a boost-back burn, a 30 s re-entry burn and a
+PD landing controller tuned for touchdown below 2 m/s. The simulated trajectory overlaps SpaceX webcast
+telemetry, and the paper shows the landing at Cape Canaveral in 3-D with the DLR Visualization library,
+which needs a commercial license. The paper closes by noting the opportunity to optimize these flight paths
+for fuel consumption.
+
+The library has three packages: `SimpleLander` (a 1-D vertical lander and early MultiBody fuselages),
+`LanderWithHorizontalVelocity` (the full controlled 3-D stage) and `LanderWithVisualization` (the same with
+DLR Visualization).
+
+## What Rumoca adds
+
+| Topic | 2021 paper | This entry, with Rumoca 0.10.2 |
+|---|---|---|
+| Compiler | Dymola | Rumoca compiles the untouched `SimpleLander.rocket` in 0.37 s and matches OpenModelica to 0.35 mm |
+| Landing burn | Hand-tuned PD landing controller | Fuel-optimal burn from CasADi on Rumoca's export, checked four ways and in OpenModelica |
+| Gradients | None | JAX gradients of the touchdown speed; drag coefficient identified from OpenModelica data |
+| 3-D view | DLR Visualization library (commercial license) | Rumoca's free, open-source Three.js viewer, live, with autopilot, manual throttle, Land-it-again and loop |
+| Touchdown | Below 2 m/s by tuning | 1.8 m/s from the optimal switch altitude, every flight |
+| Full 3-D stage | Runs in Dymola | Does not run in Rumoca 0.10.2 yet; support status and blockers documented below |
+
+**Starting model for this entry.** `RocketLanding.SimpleLander.rocket`: point mass, constant thrust while
+the tank has propellant, quadratic drag, 1-D vertical motion. The repository is used untouched.
 
 **Change.** `models/RumocaRocketLanding.mo` re-casts the same equations and parameters for Rumoca's
 JAX/CasADi targets: a throttle input `u` replaces the fixed on/off engine, initial conditions move from an

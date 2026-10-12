@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 viewer/rocket/viewer_run.log
 viewer/rocket/*.html
+paper_src/

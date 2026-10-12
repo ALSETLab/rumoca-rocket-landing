@@ -1,65 +1,79 @@
-# Challenge entry: ALSETLab RocketLanding through Rumoca
+# Challenge entry: a Falcon 9-style landing from the ALSETLab RocketLanding library, through Rumoca
 
-Text for the presenters (enter by 12:40) and for the gallery issue
-(https://github.com/CogniPilot/rumoca_workshop_amc2026/issues/1). Times are wall time including debugging.
+Rumoca workshop, American Modelica Conference 2026 (CogniPilot, Georgia Tech, 2026-10-12). Enter with the
+presenters by 12:40; the gallery post below is for
+https://github.com/CogniPilot/rumoca_workshop_amc2026/issues/1.
 
 ## One-line entry for the presenters
 
-Luigi Vanfretti (ALSETLab, RPI). Question: can Rumoca take our 2021 Modelica rocket-landing model, unchanged,
-and plan a minimum-propellant hoverslam with CasADi that OpenModelica confirms? Starting model:
-`RocketLanding.SimpleLander.rocket` (Canham, Podlaski, Vanfretti, Modelica 2021). Tool: Claude Code
-(Claude Fable 5.1, then Claude Opus 5.5) in the Claude desktop app, with Rumoca 0.10.2, CasADi, JAX,
-OpenModelica 1.27. Elapsed: 1 h 00 min to the verified plots (10:05 to 11:05 EDT), 2 h 00 min including
-the 3-D viewer with buttons and loop mode (to 12:05 EDT), all debugging included. Shown live: the Rumoca viewer at http://localhost:8080
-with the autopilot landing, plus the figures.
+Luigi Vanfretti (ALSETLab, RPI). Question: can Rumoca take our open-source Modelica rocket-landing library
+(Modelica Conference 2021) and do what the paper left as future work, a fuel-optimal landing, then fly it in
+3-D without the licensed DLR Visualization library? Starting model: `RocketLanding.SimpleLander.rocket`
+(Canham, Podlaski, Vanfretti). Tool: Claude Code (Claude Fable 5.1, then Claude Opus 5.5) with Rumoca 0.10.2,
+CasADi, JAX, OpenModelica 1.27. Elapsed: 2 h 00 min wall time, 10:05 to 12:05 EDT, debugging included.
+Shown live: Rumoca's 3-D viewer at http://localhost:8080 (autopilot landing on a loop, Land-it-again button).
 
-## Gallery post
+## Gallery post (paste as a comment)
 
-**Name / question.** Luigi Vanfretti, ALSETLab (RPI). Can Rumoca run a Modelica rocket model our lab published
-in 2021, without re-typing any physics in Python, and let CasADi plan a Falcon-style landing burn that an
-independent tool confirms?
+### Falcon 9-style landing burn: the ALSETLab RocketLanding Modelica library meets Rumoca
 
-**Starting model and change.** `RocketLanding.SimpleLander.rocket` from ALSETLab/RocketLanding (C. Canham,
-M. Podlaski, L. Vanfretti, 14th Modelica Conference 2021), used untouched for the baseline. My change: a
-re-cast `RumocaRocketLanding.Lander` with a throttle input, `start/fixed` initial conditions instead of an
-`initial equation` section, inlined forces and a smooth drag law, because Rumoca 0.10.2's `jax-ode` and
-`casadi-ode` targets reject algebraic variables and initialization sections. A second model, `LanderBurn`,
-replays an open-loop coast-then-full-throttle schedule in Rumoca's native simulator and in OpenModelica.
-A third, `LanderLive`, flies in Rumoca's own 3-D viewer with keyboard throttle or an autopilot that ignites
-near the altitude where the CasADi switch falls (402.40 m); Rumoca's native simulator lands it at 1.8 m/s with
-12.1 kg left, and a loop mode re-flies it every 18 s.
+**Name / question.** Luigi Vanfretti, ALSETLab, Rensselaer Polytechnic Institute. Our 2021 Modelica
+Conference paper modeled a Falcon 9 first stage returning from stage separation and closed with a call for
+fuel-optimal landing trajectories. Can Rumoca take the open-source models from that paper, plan the
+fuel-optimal landing burn, check it against an independent tool, and fly it in 3-D without the licensed DLR
+Visualization library the paper used?
 
-**Before/after and checked result.**
-- Rumoca compiles the untouched 2021 model in 0.37 s and simulates 60 s of flight in 5 ms. Against
-  OpenModelica (dassl, tol 1e-8) the altitude differs by at most 0.35 mm over a 2.8 km range, and both tools
-  put burnout at 10.000 s and apogee at 383.80 m, 15.033 s.
-- CasADi, fed directly by Rumoca's `to_casadi()` export (multiple shooting, RK4, 160 intervals, free final
-  time, IPOPT 16 iterations), finds the minimum-propellant landing from 800 m at 70 m/s down: coast, then full
-  throttle from 4.988 s, touchdown at 13.92 s with 10.66 kg of 100 kg propellant left. Igniting 1 s early
-  arrests the rocket 98 m above the pad, it climbs, runs dry and hits at 43 m/s; 1 s late hits at 44 m/s.
-- The check: the same ignition time falls out of four independent routes within 0.1 ms: the CasADi NLP
-  (4.98778 s), a CVODES re-integration (4.98775 s), a differentiable JAX rollout (4.98789 s), and a bisection
-  with Rumoca's native event-based simulator (4.98782 s). OpenModelica, run on the same `.mo` at that
-  ignition time, lands at 0.3 to 0.4 m/s. JAX also recovers the drag coefficient 0.2000 from the OpenModelica
-  trajectory and shows the knife edge: igniting 100 ms late costs 15 m/s of touchdown speed.
-- Rumoca 0.10.2 findings from the checks: a grazing state event is missed (the rocket passes 1.8 cm below
-  the pad for 0.11 s without the `terminate` when-clause firing, which OpenModelica catches); time events are
-  resolved on an internal 0.2 ms grid; the Windows release binary lacks the viewer's browser bundle; and the
-  viewer's reset restores the states but not the clock.
+**Starting model and authors.** The [ALSETLab/RocketLanding](https://github.com/ALSETLab/RocketLanding)
+library from C. Canham, M. Podlaski and L. Vanfretti, "Guidance, Navigation, and Control enabling
+Retrograde Landing of a First Stage Rocket," Proceedings of the 14th International Modelica Conference,
+Linköping, 2021, [doi:10.3384/ecp21181171](https://doi.org/10.3384/ecp21181171). The library holds a 3-D
+MultiBody first stage (48 m by 3.7 m, one 914 kN engine, three grid fins, altitude-dependent drag, a
+kerosene/oxygen injector) with a four-part flight controller: grid fins, boost-back, re-entry burn and a PD
+landing controller. Started at 166 km and 293 m/s, it matched SpaceX Falcon 9 webcast telemetry. Its 3-D
+view used the DLR Visualization library, which needs a commercial license. Here I used the library's
+`SimpleLander.rocket`, the vertical landing burn, unchanged for the baseline.
 
-**Tool and time.** Claude Code (Claude Fable 5.1, then Claude Opus 5.5 after 11:30 EDT), Rumoca 0.10.2,
-CasADi 3.7.2, JAX 0.4.38, OpenModelica 1.27. Wall time 1 h 00 min to the verified figures (10:05 to 11:05
-EDT) and 2 h 00 min including the 3-D viewer, all debugging included.
+**My change.** A re-cast `Lander` model with a throttle input, start/fixed initial conditions, inlined
+forces and a smooth drag law, so Rumoca 0.10.2 can export it to CasADi and JAX. A `LanderBurn` model replays
+a coast-then-full-throttle schedule in Rumoca's native simulator and in OpenModelica. A `LanderLive` model
+with a Three.js scene flies it in Rumoca's own 3-D viewer: an autopilot, manual throttle, a Land-it-again
+button and a loop mode.
 
-**Links.** Repository folder `C:\GIT\rumoca-rocket-landing` (public link to follow if published).
+**Results, with what is new compared with the 2021 paper.**
+- **Same model, new compiler.** Rumoca compiles the untouched 2021 model in 0.37 s and simulates 60 s of
+  flight in 5 ms. It matches OpenModelica to 0.35 mm in altitude over 2.8 km, with the same burnout
+  (10.000 s) and apogee (383.80 m).
+- **The paper's future work, done.** CasADi on Rumoca's export (multiple shooting, IPOPT, 16 iterations)
+  finds the minimum-propellant landing from 800 m at 70 m/s down: coast, then full throttle from 4.988 s,
+  touchdown at 13.92 s with 10.7 of 100 kg propellant left. One second earlier the stage stops 98 m up,
+  climbs, runs dry and hits at 43 m/s. One second later it hits at 44 m/s.
+- **Checked four ways.** CasADi, a CVODES re-integration, a differentiable JAX rollout and a bisection with
+  Rumoca's native event simulator agree on the ignition time within 0.1 ms. OpenModelica, run on the same
+  file at that time, lands at 0.3 to 0.4 m/s.
+- **Differentiable.** JAX recovers the drag coefficient (0.2000) from OpenModelica's trajectory and shows
+  the knife edge: igniting 100 ms late costs 15 m/s of touchdown speed.
+- **3-D without the DLR library.** Rumoca's free, open-source Three.js viewer flies the landing live. The
+  autopilot lights the engine at 402.4 m and lands at 1.8 m/s, inside the paper's 2 m/s touchdown
+  criterion, every 18 s in loop mode.
+- **For the Rumoca team.** The repository lists the issues found, with exact errors. Among them: a missed
+  grazing touchdown event, time events on a 0.2 ms grid, and a viewer reset that keeps the clock running.
+  The full 3-D MultiBody stage does not run yet. With a `Modelica.Math` work-around the fuselage alone
+  free-falls exactly at g, but the complete model stops in the compiler at a `Modelica.Fluid` array-shape
+  check.
+
+**Tool and time.** Claude Code (Claude Fable 5.1, then Claude Opus 5.5), Rumoca 0.10.2, CasADi 3.7.2, JAX
+0.4.38, OpenModelica 1.27. 2 h 00 min wall time including debugging.
+
+**Links.** Models: https://github.com/ALSETLab/RocketLanding. Paper:
+https://doi.org/10.3384/ecp21181171. Rumoca experiment: repository link to follow.
 
 ## 45-second pitch
 
-"Our lab published this rocket-landing Modelica model in 2021. Rumoca compiles it unchanged in a third of a
-second and matches OpenModelica to a third of a millimetre. I re-cast it with a throttle input, handed
-Rumoca's CasADi export to IPOPT, and it planned the hoverslam: coast, full throttle at 4.988 seconds,
-touchdown with 10.7 kg of fuel left. One second early you stall and crash, one second late you crash. The
-check: four independent routes, CasADi, CVODES, JAX and Rumoca's own event simulator, agree on the ignition
-time within a tenth of a millisecond, and OpenModelica lands the same file at 0.3 m/s. Along the way we caught
-two event-handling bugs in Rumoca. And here it is in Rumoca's own 3-D viewer: the autopilot lights the
-engine at 402 metres and sets it down at under two metres per second, again and again. Built with Claude Code in under two hours."
+"In 2021 our lab published an open-source Modelica model of a Falcon 9 first stage coming home, with a
+flight controller that matched SpaceX telemetry. The paper ended by saying the landing could be made
+fuel-optimal. Today Rumoca did that. It compiles our model unchanged in a third of a second and matches
+OpenModelica to a third of a millimetre. Its CasADi export gives the fuel-optimal landing burn: coast, full
+throttle at 4.988 seconds, 10.7 kg of fuel left. One second early or late, you crash. CasADi, CVODES, JAX
+and Rumoca's own simulator agree on that time within a tenth of a millisecond. And instead of the licensed
+DLR visualization from the paper, here it is in Rumoca's free 3-D viewer, landing at 1.8 metres per second,
+on a loop. Paper and models are linked in the gallery. Built with Claude Code in two hours."
