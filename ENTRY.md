@@ -1,4 +1,4 @@
-# Challenge entry: a Falcon 9-style landing from the ALSETLab RocketLanding library, through Rumoca
+# Challenge entry: Beyond GN&C-Enabled Retrograde Landing: Fuel-Optimal Landing of a First Stage Rocket with Rumoca
 
 Rumoca workshop, American Modelica Conference 2026 (CogniPilot, Georgia Tech, 2026-10-12). Enter with the
 presenters by 12:40; the gallery post below is for
@@ -15,7 +15,7 @@ Shown live: Rumoca's 3-D viewer at http://localhost:8080 (autopilot landing on a
 
 ## Gallery post (paste as a comment)
 
-### Falcon 9-style landing burn: the ALSETLab RocketLanding Modelica library meets Rumoca
+### Beyond GN&C-Enabled Retrograde Landing: Fuel-Optimal Landing of a First Stage Rocket with Rumoca
 
 **Name / question.** Luigi Vanfretti, ALSETLab, Rensselaer Polytechnic Institute. Our 2021 Modelica
 Conference paper modeled a Falcon 9 first stage returning from stage separation and closed with a call for

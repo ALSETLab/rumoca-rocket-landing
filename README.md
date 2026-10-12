@@ -1,4 +1,4 @@
-# Falcon-style landing burn from the ALSETLab RocketLanding library, through Rumoca
+# Beyond GN&C-Enabled Retrograde Landing: Fuel-Optimal Landing of a First Stage Rocket with Rumoca
 
 Entry for the open challenge of the **Rumoca workshop at the American Modelica Conference 2026**
 (CogniPilot, Georgia Tech, 2026-10-12, release `workshop-amc2026-r9`). The entry text and the 45-second
