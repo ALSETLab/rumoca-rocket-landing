@@ -192,3 +192,5 @@ License: BSD 3-Clause (see `LICENSE`; third-party portions in `NOTICE`). Startin
 adapted from `scripts/common.py` of CogniPilot/rumoca_workshop_amc2026 (Apache-2.0). Tooling: Rumoca 0.10.2,
 CasADi 3.7.2 with IPOPT, JAX 0.4.38, OpenModelica 1.27.0. Agent: Claude Code in the Claude desktop app, with Claude Fable 5.1
 and, after 11:30 EDT, Claude Opus 5.5; wall time is recorded in `ENTRY.md`.
+
+Lessons learned across both Rumoca projects: `LESSONS_LEARNED.md`.
