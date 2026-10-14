@@ -23,7 +23,7 @@ Stream "jax" of the AMC 2026 Rumoca open-challenge entry.
      by bisection on 4..6 s. Gradients of the touchdown speed w.r.t. t_ign, cd, Fengine and
      EmptyRocket come from jax.grad and are checked against central finite differences.
 
-Run:  cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu \
+Run:  (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu \
         .venv/Scripts/python.exe scripts/identify_and_sensitivity_jax.py
 """
 from __future__ import annotations

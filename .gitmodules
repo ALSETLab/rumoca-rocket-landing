@@ -1,0 +1,6 @@
+[submodule "external/RocketLanding"]
+	path = external/RocketLanding
+	url = https://github.com/ALSETLab/RocketLanding.git
+[submodule "external/rumoca-web-assets"]
+	path = external/rumoca-web-assets
+	url = https://github.com/ALSETLab/rumoca-web-assets.git

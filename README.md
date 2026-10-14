@@ -122,7 +122,7 @@ costs a few tenths of a metre per second.
 ### 4. Flying it in Rumoca's 3-D viewer
 
 `viewer/rocket/` runs `LanderLive.mo` in the Rumoca CLI's interactive Three.js viewer
-(PowerShell: `& C:\GIT\rumoca-rocket-landing\viewer\rocket\run_viewer.ps1`, which opens http://localhost:8080). On-screen buttons (or Space, L, R) toggle
+(PowerShell, from the repository root: `.\viewer\rocket\run_viewer.ps1`, which opens http://localhost:8080). On-screen buttons (or Space, L, R) toggle
 the autopilot and the loop and land it again; W/S fly the throttle by hand. The autopilot is the CasADi hoverslam turned into a trigger: ignite when the
 altitude drops through 402.40 m, 11 cm below where the optimal switch time falls on the coast. Rumoca's
 native simulator lands it at 1.8 m/s with 12.1 kg left (both `rk-like` and `auto`), and loop mode re-flies it
@@ -168,24 +168,37 @@ at an event for `propellerTest`, a Solve-IR tensor fill for the full drone examp
 
 ## How to run
 
-```bash
-cd C:/GIT/rumoca-rocket-landing
-uv venv .venv --python 3.12
-uv pip install --python .venv/Scripts/python.exe -r requirements.txt
-PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/smoke_lander.py
-PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/baseline_original_rocket.py
-PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/optimize_landing_casadi.py
-PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/identify_and_sensitivity_jax.py
-PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/stretch_multibody.py
+Clone with the submodules: `external/RocketLanding` (the original ALSETLab models) and
+`external/rumoca-web-assets` ([ALSETLab/rumoca-web-assets](https://github.com/ALSETLab/rumoca-web-assets), the
+viewer kit the Rumoca 0.10.2 Windows release binary needs). Then run the setup script once (PowerShell, Python
+3.12 on PATH as `py -3.12` or `python`):
+
+```powershell
+git clone --recurse-submodules https://github.com/ALSETLab/rumoca-rocket-landing.git
+cd rumoca-rocket-landing
+.\setup.ps1
 ```
 
-The baseline and the OpenModelica cross-checks need `omc.exe` from OpenModelica 1.27 (path in
-`scripts/common.py`). The MultiBody stretch needs the Modelica Standard Library 3.2.3 and 4.0.0 as single
-root directories (`results/scratch/msl323`, `results/scratch/msl400`, built from OpenModelica's library
-folder as described in the stretch script). The 3-D viewer needs the Rumoca CLI
-(`rumoca-windows-x86_64.exe` from the v0.10.2 release, installed as `%LOCALAPPDATA%\rumoca\bin\rumoca.exe`),
-plus the browser bundle in `C:\GIT\rumoca-web-assets`, which the release binary does not ship (see that README).
+`setup.ps1` initializes the submodules (if the clone was made without `--recurse-submodules`), creates `.venv`
+from `requirements.txt` and downloads the Rumoca CLI into the viewer kit, checking its SHA-256. Then, from the
+repository root:
 
+```powershell
+$env:PYTHONIOENCODING = "utf-8"; $env:JAX_PLATFORMS = "cpu"
+.venv\Scripts\python.exe scripts\smoke_lander.py
+.venv\Scripts\python.exe scripts\baseline_original_rocket.py
+.venv\Scripts\python.exe scripts\optimize_landing_casadi.py
+.venv\Scripts\python.exe scripts\identify_and_sensitivity_jax.py
+.\viewer\rocket\run_viewer.ps1
+```
+
+The baseline and the OpenModelica cross-checks need `omc.exe` from OpenModelica 1.27 (found through
+`OPENMODELICAHOME`, otherwise the default install path in `scripts/common.py`). The MultiBody stretch
+(`scripts/stretch_multibody*.py`) also needs the Modelica Standard Library 3.2.3 and 4.0.0 as single root
+directories (`results/scratch/msl323`, `results/scratch/msl400`, built from OpenModelica's library folder as
+described in the stretch script) and, for the DroneLibrary models, a sibling checkout of
+[ALSETLab/rumoca-drone-library](https://github.com/ALSETLab/rumoca-drone-library) with its submodules (or
+`DRONELIBRARY_DIR`).
 ## Credits
 
 License: BSD 3-Clause (see `LICENSE`; third-party portions in `NOTICE`). Starting model and parameters: ALSETLab RocketLanding (see that repository's license). Integration helpers

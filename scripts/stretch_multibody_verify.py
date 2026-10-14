@@ -14,7 +14,7 @@
 
 Outputs: results/live/multibody_freefall_check.json, results/live/multibody_freefall_check.png,
          results/live/multibody_support_matrix_patchedA.{json,md}
-Re-run: cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_verify.py
+Re-run: (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_verify.py
 """
 from __future__ import annotations
 

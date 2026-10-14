@@ -6,4 +6,3 @@ __pycache__/
 viewer/rocket/viewer_run.log
 viewer/rocket/*.html
 paper_src/
-PRESENTER_CHEATSHEET.md

@@ -15,7 +15,7 @@ pad falling at 70 m/s.
 | `LanderLive.mo` | Self-contained Modelica model: inputs `throttle_cmd` (0..1) and `autopilot` (0/1); states `y`, `v`, `fuel_mass`; latches `ignited`, `landed`, `touchdown_speed`, `crashed`; viewer outputs `position[3]`, `quat[4]`, `thrust`, `vx`, `vy`, `vz`. |
 | `rumoca-scenario.toml` | Rumoca scenario: keyboard input, signal wiring, viewer frame and heads-up display, ports 8080 (HTTP) and 8081 (WebSocket). |
 | `rocket_scene.js` | Three.js scene: ground, grid, landing pad, rocket with legs, thrust-scaled exhaust, chase camera, on-screen buttons and a status line. No external assets. |
-| `run_viewer.sh` | Starts the viewer from `C:\GIT\rumoca-web-assets` (see below). |
+| `run_viewer.ps1`, `run_viewer.sh` | Start the viewer through the `external/rumoca-web-assets` submodule (see below). |
 | `LanderBatchTest.mo`, `check_loop.py`, `check_loop_margin.py`, `batch_*_result.txt` | Batch checks of the autopilot and loop with Rumoca's native simulator. |
 | `ignition_sweep.txt` | Earlier sweep with a time-triggered autopilot, showing how knife-edge the hoverslam is. |
 
@@ -48,17 +48,18 @@ rocket climbs again, runs dry and falls. Screenshots: `results/reference/viewer_
 
 The Rumoca 0.10.2 Windows release binary does not include the viewer's browser bundle; without it the page
 shows "Missing Rumoca viewer shell". The CLI looks for `packages/rumoca-web/viz/viewer.html` and
-`packages/rumoca-web/vendor/three_viewer.js` under the current folder, so the launch script runs it from
-`C:\GIT\rumoca-web-assets`, which holds both (see the README there).
+`packages/rumoca-web/vendor/three_viewer.js` under the current folder, so the launch script runs it from the
+`external/rumoca-web-assets` submodule ([ALSETLab/rumoca-web-assets](https://github.com/ALSETLab/rumoca-web-assets)),
+which holds both and downloads `rumoca.exe` on first use. After `.\setup.ps1` in the repository root:
 
 ```powershell
-& C:\GIT\rumoca-rocket-landing\viewer\rocket\run_viewer.ps1
+.\viewer\rocket\run_viewer.ps1
 ```
 
-From Git Bash: `bash C:/GIT/rumoca-rocket-landing/viewer/rocket/run_viewer.sh`.
+From Git Bash: `bash viewer/rocket/run_viewer.sh`.
 
-Then open <http://localhost:8080>. The viewer runs in real time until you press Q or stop `rumoca.exe`.
-
+The browser opens <http://localhost:8080> by itself. The viewer runs in real time until you press Q or stop
+`rumoca.exe`.
 ## Controls
 
 | Key | Action |

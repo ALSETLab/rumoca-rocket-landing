@@ -14,7 +14,7 @@ Plus a before/after demo (ignite 1 s early / optimal / 1 s late).
 No vehicle physics is written in Python: every derivative comes from Rumoca's exports or simulators,
 or from OpenModelica. Python only transcribes, optimizes, integrates, interpolates, plots and compares.
 
-Run:  cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/optimize_landing_casadi.py
+Run:  (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/optimize_landing_casadi.py
 """
 from __future__ import annotations
 

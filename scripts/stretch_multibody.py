@@ -12,7 +12,7 @@ Outputs (all under results/live/):
   multibody_support_matrix.md    - the table
 
 Re-runnable from scratch:
-  cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody.py
+  (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody.py
   Options: --only NAME (substring filter), --timeout SECONDS (default 420 per model), --msl323 DIR / --msl400 DIR
   (alternative roots, used by the verify script to re-run the matrix on the patched scratch copies), --tag SUFFIX,
   --render-only (re-render the .md from the existing .json).
@@ -30,8 +30,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common  # noqa: E402
 
-ROCKET = Path(r"C:\GIT\RocketLanding")
-DRONE = Path(r"C:\GIT\Modelica-Drone-3D-FMI\A_Modelica\DroneLibrary")
+ROCKET = common.ORIGINAL_REPO
+DRONE = common.DRONE_LIBRARY
 
 MODELS = [
     # (fully-qualified class, file, MSL label)

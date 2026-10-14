@@ -21,10 +21,17 @@ import rumoca as rum
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = ROOT / "models" / "RumocaRocketLanding.mo"
-ORIGINAL_REPO = Path(r"C:\GIT\RocketLanding")
+# ALSETLab/RocketLanding, a git submodule (git clone --recurse-submodules, or git submodule update --init).
+ORIGINAL_REPO = Path(os.environ.get("ROCKETLANDING_DIR", ROOT / "external" / "RocketLanding"))
 ORIGINAL_ROCKET = ORIGINAL_REPO / "SimpleLander" / "rocket.mo"
+# DroneLibrary, used only by the stretch_multibody* scripts: by default the submodule of a sibling
+# rumoca-drone-library checkout.
+DRONE_LIBRARY = Path(os.environ.get(
+    "DRONELIBRARY_DIR",
+    ROOT.parent / "rumoca-drone-library" / "external" / "Modelica-Drone-3D-FMI" / "A_Modelica" / "DroneLibrary"))
 RESULTS = ROOT / "results" / "live"
-OMC = Path(r"C:\Program Files\OpenModelica1.27.0-64bit\bin\omc.exe")
+OMC = (Path(os.environ["OPENMODELICAHOME"]) / "bin" / "omc.exe" if "OPENMODELICAHOME" in os.environ
+       else Path(r"C:\Program Files\OpenModelica1.27.0-64bit\bin\omc.exe"))
 
 OM_LIBS = Path(os.environ["APPDATA"]) / ".openmodelica" / "libraries"
 # A single root directory holding Modelica/, ModelicaServices/ and Complex/ side by side

@@ -5,7 +5,7 @@
  (2) adding C:/GIT as a second root is rejected as a whole ('Failed to load source root ... PKG-006 ... missing package.mo'):
      one malformed sibling package poisons an entire root. This probe only READS C:/GIT (takes ~1 min).
 Output: results/live/multibody_loading_probe.json
-Re-run: cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_loading_probe.py
+Re-run: (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_loading_probe.py
 """
 from __future__ import annotations
 
@@ -17,8 +17,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common  # noqa: E402
 
 MODEL = "RocketLanding.SimpleLander.FusalageInGravity"
-PKG = Path(r"C:\GIT\RocketLanding\package.mo")
-FILE = Path(r"C:\GIT\RocketLanding\SimpleLander\FusalageInGravity.mo")
+PKG = common.ORIGINAL_REPO / "package.mo"
+FILE = common.ORIGINAL_REPO / "SimpleLander" / "FusalageInGravity.mo"
 
 
 def main() -> int:
@@ -50,11 +50,11 @@ def main() -> int:
 
     t0 = time.perf_counter()
     try:
-        m = rum.Session(roots=[msl, r"C:\GIT"]).load(str(FILE), model=MODEL)
+        m = rum.Session(roots=[msl, str(common.ORIGINAL_REPO.parent)]).load(str(FILE), model=MODEL)
         res = {"outcome": "loaded", "summary": str(m.summary())}
     except Exception as exc:  # noqa: BLE001
         res = {"outcome": "error", "error": f"{type(exc).__name__}: {exc}"[:800]}
-    res.update({"probe": "roots=[msl323, C:/GIT] (parent folder of the library as a second root)", "file": str(FILE),
+    res.update({"probe": "roots=[msl323, parent folder of the library] (recorded run: C:/GIT)", "file": str(FILE),
                 "wall_s": round(time.perf_counter() - t0, 2)})
     out["probes"].append(res)
     print(res["probe"], "->", res.get("error", res.get("summary"))[:300], flush=True)

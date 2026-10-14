@@ -11,7 +11,7 @@ Steps
  4. Figure results/live/baseline_original_rocket.png, JSON results/live/baseline_original_rocket.json.
 
 Re-runnable from scratch:
-  cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu \
+  (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu \
       .venv/Scripts/python.exe scripts/baseline_original_rocket.py
 """
 from __future__ import annotations

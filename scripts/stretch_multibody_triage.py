@@ -13,7 +13,7 @@ support-matrix run that reads results/scratch/msl323 is not disturbed. Attempts:
 The model is recompiled + simulated (1 s, dt 0.1) in a child process via scripts/stretch_multibody.py --child.
 
 Outputs: results/live/multibody_cos_triage.json, results/live/multibody_cos_triage.md
-Re-run: cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_triage.py
+Re-run: (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_triage.py
 """
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ import common  # noqa: E402
 
 FUNCS = ["sin", "cos", "tan", "asin", "acos", "atan", "atan2", "sinh", "cosh", "tanh", "exp", "log", "log10", "sqrt"]
 MODEL = "RocketLanding.SimpleLander.FusalageInGravity"
-FILE = Path(r"C:\GIT\RocketLanding\SimpleLander\FusalageInGravity.mo")
+FILE = common.ORIGINAL_REPO / "SimpleLander" / "FusalageInGravity.mo"
 SRC_ROOT = common.MSL323_ROOT
 TIMEOUT = 300.0
 

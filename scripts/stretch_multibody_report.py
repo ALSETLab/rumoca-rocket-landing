@@ -1,7 +1,7 @@
 """Merge the multibody stream's outputs into one Markdown deliverable results/live/multibody_support_matrix.md
 (baseline table + patched-MSL table + cos triage table + free-fall check + OpenModelica cross-check + loading probe).
 Re-runnable; reads only results/live/*.json/.md.
-Run: cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/stretch_multibody_report.py
+Run: (from the repository root) PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/stretch_multibody_report.py
 """
 import json, sys
 from pathlib import Path

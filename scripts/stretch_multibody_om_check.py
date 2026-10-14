@@ -7,7 +7,7 @@ actually moves. Signals are compared on a common grid that avoids the event inst
 Note: omc resolves `loadModel(Modelica, {"4.0.0"})` to whatever compatible MSL it has installed (recorded in the JSON
 as om_msl_version), while Rumoca reads the MSL 4.0.0 scratch copy; small differences may also come from this.
 Outputs: results/live/multibody_om_motortest_check.json, results/live/multibody_om_motortest_check.png
-Re-run: cd C:/GIT/rumoca-rocket-landing && PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_om_check.py
+Re-run: (from the repository root) PYTHONIOENCODING=utf-8 JAX_PLATFORMS=cpu .venv/Scripts/python.exe scripts/stretch_multibody_om_check.py
 """
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ import numpy as np  # noqa: E402
 import common  # noqa: E402
 
 MODEL = "DroneLibrary.Tests.motorTest"
-FILE = Path(r"C:\GIT\Modelica-Drone-3D-FMI\A_Modelica\DroneLibrary\Tests\motorTest.mo")
-PKG = Path(r"C:\GIT\Modelica-Drone-3D-FMI\A_Modelica\DroneLibrary\package.mo")
+FILE = common.DRONE_LIBRARY / "Tests" / "motorTest.mo"
+PKG = common.DRONE_LIBRARY / "package.mo"
 ROOT400_A = common.ROOT / "results" / "scratch" / "msl400_triage_A"
 T_END, DT = 3.0, 0.1
 SIGNALS = ["dCmotor.w", "dCmotor.torque", "feedback.y", "step.y", "step1.y",
